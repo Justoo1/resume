@@ -4,7 +4,7 @@ import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { Separator } from '@/components/ui/separator'
+// import { Separator } from '@/components/ui/separator'
 import { 
   Mail, 
   Phone, 
@@ -216,7 +216,7 @@ const CVPortfolio = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                {workExperience.map((job, index) => (
+                {workExperience.map((job) => (
                   <div key={job.id} className="timeline-item pb-6">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                       <h3 className="font-semibold text-lg">{job.position}</h3>
@@ -282,7 +282,7 @@ const CVPortfolio = () => {
                           <div className="font-semibold text-primary">
                             {project.stats.sales ? `$${(project.stats.sales / 1000).toFixed(0)}k` : 
                              project.stats.tasks ? `${(project.stats.tasks / 1000).toFixed(0)}k` :
-                             `${(project.stats.dataPoints / 1000000).toFixed(1)}M`}
+                             project?.stats?.dataPoints ? `${(project.stats.dataPoints / 1000000).toFixed(1)}M` : 'N/A'}
                           </div>
                           <div className="text-xs text-gray-500">
                             {project.stats.sales ? 'Revenue' : 

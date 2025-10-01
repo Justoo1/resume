@@ -85,7 +85,7 @@ export function ContactForm() {
                 Contact Form
               </CardTitle>
               <CardDescription>
-                Fill out the form below and I'll get back to you as soon as possible.
+                Fill out the form below and I&apos;ll get back to you as soon as possible.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -186,7 +186,7 @@ export function ContactForm() {
                     className="flex items-center gap-2 p-4 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-lg border border-green-200 dark:border-green-800"
                   >
                     <CheckCircle className="w-5 h-5" />
-                    <span>Message sent successfully! I'll get back to you soon.</span>
+                    <span>Message sent successfully! I&apos;ll get back to you soon.</span>
                   </motion.div>
                 )}
 

@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Initialize Resend with a placeholder key if not set (for build time)
+const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder-key-for-build')
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),

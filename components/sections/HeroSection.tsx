@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
+// import { Badge } from '@/components/ui/badge'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import {
@@ -16,6 +16,7 @@ import {
   User,
   Download
 } from 'lucide-react'
+import { Button } from '../ui/button'
 
 interface PersonalInfo {
   name: string
@@ -49,12 +50,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ personalInfo, onPrint }) => {
       <div className="absolute top-6 right-6 z-20 print:hidden flex gap-3">
         <LanguageSwitcher />
         <ThemeToggle />
-        <button
+        <Button
           onClick={onPrint}
           className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
         >
           <Download className="w-5 h-5" />
-        </button>
+        </Button>
       </div>
       
       <div className="relative z-10 px-6 py-16 max-w-7xl mx-auto">

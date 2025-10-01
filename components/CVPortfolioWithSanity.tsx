@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { Separator } from '@/components/ui/separator'
+// import { Separator } from '@/components/ui/separator'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { 
   Mail, 
@@ -299,7 +299,7 @@ const CVPortfolioWithSanity = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
-                    {workExperience.map((job, index) => (
+                    {workExperience.map((job) => (
                       <div key={job._id} className="timeline-item pb-6">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                           <h3 className="font-semibold text-lg">{job.position}</h3>

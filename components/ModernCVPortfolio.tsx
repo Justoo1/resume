@@ -11,6 +11,8 @@ import CaseStudiesSection from './sections/CaseStudiesSection'
 import ProcessDocumentationSection from './sections/ProcessDocumentationSection'
 import { ContactForm } from './ContactForm'
 import { useLanguage } from './providers/LanguageProvider'
+import { PortableTextBlock } from 'next-sanity'
+import Link from 'next/link'
 
 // Types
 interface PersonalInfo {
@@ -32,7 +34,7 @@ interface WorkExperience {
   position: string
   startDate: string
   endDate?: string
-  description: string
+  description: PortableTextBlock[]
   technologies: string[]
   order: number
 }
@@ -232,12 +234,12 @@ const ModernCVPortfolio = () => {
           </div>
 
           <div className="flex justify-center gap-6 mb-8 flex-wrap">
-            <a
+            <Link
               href="/blog"
               className="text-slate-300 hover:text-white transition-colors"
             >
               Blog
-            </a>
+            </Link>
             {personalInfo?.email && (
               <a
                 href={`mailto:${personalInfo.email}`}

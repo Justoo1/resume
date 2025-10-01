@@ -15,6 +15,7 @@ interface BlogPostProps {
     slug: string
     excerpt: string
     coverImageUrl?: string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     content: any[]
     author?: string
     category?: string
@@ -26,6 +27,7 @@ interface BlogPostProps {
 
 const portableTextComponents = {
   types: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     image: ({ value }: any) => (
       <div className="my-8 rounded-lg overflow-hidden">
         <Image
@@ -37,6 +39,7 @@ const portableTextComponents = {
         />
       </div>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     code: ({ value }: any) => (
       <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto my-6">
         {value.filename && (
@@ -47,26 +50,31 @@ const portableTextComponents = {
     )
   },
   block: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     h1: ({ children }: any) => (
       <h1 className="text-4xl font-bold mt-12 mb-6 text-slate-900 dark:text-slate-100">
         {children}
       </h1>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     h2: ({ children }: any) => (
       <h2 className="text-3xl font-bold mt-10 mb-4 text-slate-900 dark:text-slate-100">
         {children}
       </h2>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     h3: ({ children }: any) => (
       <h3 className="text-2xl font-bold mt-8 mb-3 text-slate-900 dark:text-slate-100">
         {children}
       </h3>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     normal: ({ children }: any) => (
       <p className="text-lg leading-relaxed mb-4 text-slate-700 dark:text-slate-300">
         {children}
       </p>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 border-blue-500 pl-6 py-2 my-6 italic text-slate-600 dark:text-slate-400 bg-blue-50 dark:bg-blue-900/20 rounded-r">
         {children}
@@ -74,11 +82,13 @@ const portableTextComponents = {
     )
   },
   list: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     bullet: ({ children }: any) => (
       <ul className="list-disc list-inside space-y-2 mb-4 text-slate-700 dark:text-slate-300">
         {children}
       </ul>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     number: ({ children }: any) => (
       <ol className="list-decimal list-inside space-y-2 mb-4 text-slate-700 dark:text-slate-300">
         {children}
@@ -86,6 +96,7 @@ const portableTextComponents = {
     )
   },
   marks: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     link: ({ children, value }: any) => (
       <a
         href={value.href}
@@ -96,6 +107,7 @@ const portableTextComponents = {
         {children}
       </a>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     code: ({ children }: any) => (
       <code className="bg-slate-200 dark:bg-slate-700 px-2 py-1 rounded text-sm font-mono text-blue-600 dark:text-blue-400">
         {children}

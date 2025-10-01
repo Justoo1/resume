@@ -6,6 +6,7 @@ import { Locale, defaultLocale, getTranslations } from '@/lib/i18n'
 interface LanguageContextType {
   locale: Locale
   setLocale: (locale: Locale) => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   t: any
 }
 

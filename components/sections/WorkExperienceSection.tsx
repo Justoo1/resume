@@ -12,7 +12,7 @@ interface WorkExperience {
   position: string
   startDate: string
   endDate?: string
-  description: PortableTextBlock
+  description: PortableTextBlock[]
   technologies: string[]
   order: number
 }
@@ -70,7 +70,7 @@ const WorkExperienceSection: React.FC<WorkExperienceSectionProps> = ({ workExper
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-blue-300 to-blue-200 dark:from-blue-700 dark:via-blue-600 dark:to-blue-700 hidden lg:block"></div>
 
           <div className="space-y-12">
-            {workExperience.map((job, index) => (
+            {workExperience.map((job) => (
               <div key={job._id} className="relative">
                 {/* Timeline dot */}
                 <div className="absolute left-6 top-8 w-4 h-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full border-4 border-white dark:border-slate-800 shadow-lg hidden lg:block z-10">

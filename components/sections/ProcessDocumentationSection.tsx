@@ -11,8 +11,6 @@ import {
   Zap,
   Shield,
   Database,
-  Cloud,
-  ArrowRight,
   CheckCircle,
   AlertCircle,
   Target,

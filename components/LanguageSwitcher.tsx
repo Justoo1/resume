@@ -15,7 +15,7 @@ const languages = [
 export function LanguageSwitcher() {
   const { locale, setLocale } = useLanguage()
 
-  const currentLanguage = languages.find((lang) => lang.code === locale) || languages[0]
+  // const currentLanguage = languages.find((lang) => lang.code === locale) || languages[0]
 
   return (
     <div className="relative group">
