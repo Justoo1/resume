@@ -1,4 +1,5 @@
 import { createClient } from 'next-sanity'
+import { Locale } from '@/lib/i18n'
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'your-project-id',
@@ -7,9 +8,9 @@ export const client = createClient({
   useCdn: process.env.NODE_ENV === 'production',
 })
 
-// GROQ queries
+// GROQ queries with locale support
 export const queries = {
-  personalInfo: `*[_type == "personalInfo"][0]{
+  personalInfo: (locale: string) => `*[_type == "personalInfo" && language == $locale][0]{
     name,
     title,
     email,
@@ -22,7 +23,7 @@ export const queries = {
     "profileImageUrl": profileImage.asset->url
   }`,
 
-  workExperience: `*[_type == "workExperience"] | order(order asc){
+  workExperience: (locale: string) => `*[_type == "workExperience" && language == $locale] | order(order asc){
     _id,
     company,
     position,
@@ -33,7 +34,7 @@ export const queries = {
     order
   }`,
 
-  projects: `*[_type == "project"] | order(order asc){
+  projects: (locale: string) => `*[_type == "project" && language == $locale] | order(order asc){
     _id,
     name,
     description,
@@ -46,7 +47,7 @@ export const queries = {
     order
   }`,
 
-  skills: `*[_type == "skill"] | order(order asc){
+  skills: (locale: string) => `*[_type == "skill" && language == $locale] | order(order asc){
     _id,
     name,
     level,
@@ -54,7 +55,7 @@ export const queries = {
     order
   }`,
 
-  education: `*[_type == "education"] | order(order asc){
+  education: (locale: string) => `*[_type == "education" && language == $locale] | order(order asc){
     _id,
     institution,
     degree,
@@ -66,7 +67,7 @@ export const queries = {
     order
   }`,
 
-  certifications: `*[_type == "certification"] | order(order asc){
+  certifications: (locale: string) => `*[_type == "certification" && language == $locale] | order(order asc){
     _id,
     name,
     issuer,
@@ -76,7 +77,8 @@ export const queries = {
     expiryDate,
     order
   }`,
-  caseStudies: `*[_type == "caseStudy" && isPublic == true] | order(_createdAt desc){
+
+  caseStudies: (locale: string) => `*[_type == "caseStudy" && language == $locale && isPublic == true] | order(_createdAt desc){
     _id,
     title,
     company,
@@ -91,39 +93,74 @@ export const queries = {
     myRole,
     "screenshots": screenshots[].asset->url,
     isPublic
+  }`,
+
+  blogPosts: (locale: string) => `*[_type == "blogPost" && language == $locale && published == true] | order(publishedAt desc){
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    "coverImageUrl": coverImage.asset->url,
+    author,
+    category,
+    tags,
+    publishedAt,
+    readingTime
+  }`,
+
+  blogPost: (locale: string) => `*[_type == "blogPost" && language == $locale && slug.current == $slug][0]{
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    "coverImageUrl": coverImage.asset->url,
+    content,
+    author,
+    category,
+    tags,
+    publishedAt,
+    readingTime
   }`
 }
 
-// Data fetching functions
-export async function getPersonalInfo() {
-  return await client.fetch(queries.personalInfo)
+// Data fetching functions with locale support
+export async function getPersonalInfo(locale: Locale = 'en') {
+  return await client.fetch(queries.personalInfo(locale), { locale })
 }
 
-export async function getWorkExperience() {
-  return await client.fetch(queries.workExperience)
+export async function getWorkExperience(locale: Locale = 'en') {
+  return await client.fetch(queries.workExperience(locale), { locale })
 }
 
-export async function getProjects() {
-  return await client.fetch(queries.projects)
+export async function getProjects(locale: Locale = 'en') {
+  return await client.fetch(queries.projects(locale), { locale })
 }
 
-export async function getSkills() {
-  return await client.fetch(queries.skills)
+export async function getSkills(locale: Locale = 'en') {
+  return await client.fetch(queries.skills(locale), { locale })
 }
 
-export async function getEducation() {
-  return await client.fetch(queries.education)
+export async function getEducation(locale: Locale = 'en') {
+  return await client.fetch(queries.education(locale), { locale })
 }
 
-export async function getCertifications() {
-  return await client.fetch(queries.certifications)
+export async function getCertifications(locale: Locale = 'en') {
+  return await client.fetch(queries.certifications(locale), { locale })
 }
 
-export async function getCaseStudies() {
-  return await client.fetch(queries.caseStudies)
+export async function getCaseStudies(locale: Locale = 'en') {
+  return await client.fetch(queries.caseStudies(locale), { locale })
 }
 
-export async function getAllData() {
+export async function getBlogPosts(locale: Locale = 'en') {
+  return await client.fetch(queries.blogPosts(locale), { locale })
+}
+
+export async function getBlogPost(slug: string, locale: Locale = 'en') {
+  return await client.fetch(queries.blogPost(locale), { slug, locale })
+}
+
+export async function getAllData(locale: Locale = 'en') {
   const [
     personalInfo,
     workExperience,
@@ -133,13 +170,13 @@ export async function getAllData() {
     certifications,
     caseStudies
   ] = await Promise.all([
-    getPersonalInfo(),
-    getWorkExperience(),
-    getProjects(),
-    getSkills(),
-    getEducation(),
-    getCertifications(),
-    getCaseStudies()
+    getPersonalInfo(locale),
+    getWorkExperience(locale),
+    getProjects(locale),
+    getSkills(locale),
+    getEducation(locale),
+    getCertifications(locale),
+    getCaseStudies(locale)
   ])
 
   return {

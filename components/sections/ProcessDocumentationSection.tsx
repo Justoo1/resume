@@ -3,14 +3,14 @@
 import React, { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { 
-  GitBranch, 
-  FileText, 
-  Settings, 
-  Users, 
-  Zap, 
-  Shield, 
-  Database, 
+import {
+  GitBranch,
+  FileText,
+  Settings,
+  Users,
+  Zap,
+  Shield,
+  Database,
   Cloud,
   ArrowRight,
   CheckCircle,
@@ -21,8 +21,10 @@ import {
   TestTube,
   Rocket
 } from 'lucide-react'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 
 const ProcessDocumentationSection: React.FC = () => {
+  const { t } = useLanguage()
   const [activeProcess, setActiveProcess] = useState('development')
 
   const processes = {
@@ -250,18 +252,18 @@ const ProcessDocumentationSection: React.FC = () => {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-indigo-100 text-indigo-800 px-6 py-3 rounded-full mb-6">
+          <div className="inline-flex items-center gap-3 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 px-6 py-3 rounded-full mb-6">
             <Settings className="w-5 h-5" />
-            <span className="font-semibold">Methodology</span>
+            <span className="font-semibold">{t.sections.methodology}</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
-            Process Documentation
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 dark:text-slate-100 mb-4">
+            {t.sections.methodologyTitle}
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Systematic approaches and methodologies I use to deliver high-quality software solutions
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            {t.sections.methodologySubtitle}
           </p>
         </div>
 
@@ -274,7 +276,7 @@ const ProcessDocumentationSection: React.FC = () => {
               className={`flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 ${
                 activeProcess === key
                   ? `bg-gradient-to-r ${process.color} text-white shadow-lg`
-                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
               }`}
             >
               {process.icon}
@@ -284,7 +286,7 @@ const ProcessDocumentationSection: React.FC = () => {
         </div>
 
         {/* Active Process Display */}
-        <div className="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           <div className={`bg-gradient-to-r ${processes[activeProcess as keyof typeof processes].color} text-white p-8`}>
             <div className="flex items-center gap-4 mb-4">
               {processes[activeProcess as keyof typeof processes].icon}
@@ -308,35 +310,35 @@ const ProcessDocumentationSection: React.FC = () => {
                         {index + 1}
                       </div>
                       {index < processes[activeProcess as keyof typeof processes].steps.length - 1 && (
-                        <div className="w-0.5 h-16 bg-gradient-to-b from-slate-300 to-transparent mt-4"></div>
+                        <div className="w-0.5 h-16 bg-gradient-to-b from-slate-300 dark:from-slate-600 to-transparent mt-4"></div>
                       )}
                     </div>
 
                     {/* Step Content */}
                     <div className="flex-1 pb-8">
-                      <Card className="border-slate-200 hover:shadow-lg transition-shadow">
+                      <Card className="border-slate-200 dark:border-slate-700 dark:bg-slate-900 hover:shadow-lg transition-shadow">
                         <CardHeader>
                           <div className="flex items-center gap-3 mb-2">
-                            <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center">
+                            <div className="w-8 h-8 bg-slate-100 dark:bg-slate-700 rounded-lg flex items-center justify-center">
                               {step.icon}
                             </div>
-                            <CardTitle className="text-xl text-slate-800">
+                            <CardTitle className="text-xl text-slate-800 dark:text-slate-100">
                               {step.title}
                             </CardTitle>
                           </div>
-                          <p className="text-slate-600">{step.description}</p>
+                          <p className="text-slate-600 dark:text-slate-300">{step.description}</p>
                         </CardHeader>
-                        
+
                         <CardContent>
                           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                             {/* Details */}
                             <div className="lg:col-span-2">
-                              <h4 className="font-semibold text-slate-700 mb-3">Key Activities:</h4>
+                              <h4 className="font-semibold text-slate-700 dark:text-slate-200 mb-3">Key Activities:</h4>
                               <ul className="space-y-2">
                                 {step.details.map((detail, detailIndex) => (
                                   <li key={detailIndex} className="flex items-start gap-2">
-                                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                                    <span className="text-slate-600">{detail}</span>
+                                    <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                                    <span className="text-slate-600 dark:text-slate-300">{detail}</span>
                                   </li>
                                 ))}
                               </ul>
@@ -344,10 +346,10 @@ const ProcessDocumentationSection: React.FC = () => {
 
                             {/* Tools */}
                             <div>
-                              <h4 className="font-semibold text-slate-700 mb-3">Tools & Technologies:</h4>
+                              <h4 className="font-semibold text-slate-700 dark:text-slate-200 mb-3">Tools & Technologies:</h4>
                               <div className="flex flex-wrap gap-2">
                                 {step.tools.map((tool, toolIndex) => (
-                                  <Badge key={toolIndex} variant="outline" className="text-slate-600 border-slate-300">
+                                  <Badge key={toolIndex} variant="outline" className="text-slate-600 dark:text-slate-300 border-slate-300 dark:border-slate-600">
                                     {tool}
                                   </Badge>
                                 ))}
@@ -366,28 +368,28 @@ const ProcessDocumentationSection: React.FC = () => {
 
         {/* Key Principles */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="text-center p-6 border-slate-200">
+          <Card className="text-center p-6 border-slate-200 dark:border-slate-700 dark:bg-slate-800">
             <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Users className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-2">Collaboration First</h3>
-            <p className="text-slate-600">Continuous stakeholder engagement and transparent communication throughout the project lifecycle.</p>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Collaboration First</h3>
+            <p className="text-slate-600 dark:text-slate-300">Continuous stakeholder engagement and transparent communication throughout the project lifecycle.</p>
           </Card>
 
-          <Card className="text-center p-6 border-slate-200">
+          <Card className="text-center p-6 border-slate-200 dark:border-slate-700 dark:bg-slate-800">
             <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Shield className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-2">Quality & Security</h3>
-            <p className="text-slate-600">Rigorous testing, code review, and security-first approach ensuring robust and reliable solutions.</p>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Quality & Security</h3>
+            <p className="text-slate-600 dark:text-slate-300">Rigorous testing, code review, and security-first approach ensuring robust and reliable solutions.</p>
           </Card>
 
-          <Card className="text-center p-6 border-slate-200">
+          <Card className="text-center p-6 border-slate-200 dark:border-slate-700 dark:bg-slate-800">
             <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Zap className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-2">Continuous Improvement</h3>
-            <p className="text-slate-600">Iterative development with continuous learning, optimization, and adaptation to changing requirements.</p>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Continuous Improvement</h3>
+            <p className="text-slate-600 dark:text-slate-300">Iterative development with continuous learning, optimization, and adaptation to changing requirements.</p>
           </Card>
         </div>
       </div>

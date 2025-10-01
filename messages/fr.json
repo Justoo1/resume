@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "download": "Télécharger CV",
+    "viewProjects": "Voir les Projets"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "experience": "Expérience",
+    "projects": "Projets",
+    "skills": "Compétences",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "sections": {
+    "workExperience": "Expérience Professionnelle",
+    "workExperienceSubtitle": "Mon parcours professionnel à travers différents rôles et entreprises",
+    "professionalJourney": "Parcours Professionnel",
+    "methodology": "Méthodologie",
+    "methodologyTitle": "Documentation des Processus",
+    "methodologySubtitle": "Approches systématiques et méthodologies que j'utilise pour fournir des solutions logicielles de haute qualité",
+    "projects": "Projets en Vedette",
+    "projectsSubtitle": "Une vitrine de mon dernier travail et de mes réalisations techniques",
+    "portfolio": "Portfolio",
+    "caseStudies": "Études de Cas",
+    "caseStudiesSubtitle": "Projets et solutions du monde réel livrés pour des clients d'entreprise et des organisations",
+    "professionalWork": "Travail Professionnel",
+    "skills": "Compétences et Expertise",
+    "skillsEducation": "Compétences et Éducation",
+    "skillsEducationSubtitle": "Mes compétences techniques, ma formation et mes certifications professionnelles",
+    "expertise": "Expertise",
+    "technicalSkills": "Compétences Techniques",
+    "education": "Éducation",
+    "certifications": "Certifications",
+    "analytics": "Analytiques et Performance",
+    "analyticsSubtitle": "Représentation visuelle de l'impact de mes projets et du développement de mes compétences",
+    "dataInsights": "Informations sur les Données",
+    "contact": "Nous Contacter"
+  },
+  "projects": {
+    "featured": "En Vedette",
+    "viewCode": "Voir le Code",
+    "liveDemo": "Démo en Direct",
+    "projectImpact": "Impact du Projet",
+    "users": "Utilisateurs",
+    "uptime": "Temps de Disponibilité",
+    "revenue": "Revenus",
+    "tasks": "Tâches",
+    "dataPoints": "Points de Données"
+  },
+  "caseStudies": {
+    "challenge": "Défi",
+    "solution": "Solution",
+    "results": "Résultats",
+    "myRole": "Mon Rôle et Contributions",
+    "technologiesUsed": "Technologies Utilisées",
+    "performanceBoost": "Amélioration des Performances",
+    "usersImpacted": "Utilisateurs Impactés",
+    "timeSaved": "Temps Économisé",
+    "costSavings": "Économies de Coûts",
+    "teamMembers": "membres de l'équipe",
+    "showMore": "Afficher Plus de Détails",
+    "showLess": "Afficher Moins"
+  },
+  "analytics": {
+    "projectUserEngagement": "Engagement des Utilisateurs du Projet",
+    "skillsProficiency": "Distribution de la Compétence en Compétences",
+    "growthOverTime": "Croissance au Fil du Temps",
+    "projects": "Projets",
+    "skills": "Compétences"
+  },
+  "contact": {
+    "title": "Nous Contacter",
+    "subtitle": "Vous avez une question ou souhaitez travailler ensemble? Envoyez-moi un message!",
+    "form": {
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "E-mail",
+      "emailPlaceholder": "votre.email@exemple.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "De quoi s'agit-il?",
+      "message": "Message",
+      "messagePlaceholder": "Votre message ici...",
+      "submit": "Envoyer le Message",
+      "sending": "Envoi...",
+      "success": "Message envoyé avec succès! Je vous répondrai bientôt.",
+      "error": "Échec de l'envoi du message. Veuillez réessayer ou m'envoyer un e-mail directement."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Réflexions, tutoriels et perspectives sur le développement logiciel, le design et la technologie",
+    "readMore": "Lire Plus",
+    "backToBlog": "Retour au Blog",
+    "backToAllPosts": "Retour à tous les articles",
+    "minRead": "min de lecture",
+    "publishedOn": "Publié le",
+    "noPosts": "Aucun article de blog pour le moment. Revenez bientôt!"
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "builtWith": "Construit avec Next.js, TypeScript et Sanity CMS"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "readMore": "Lire la suite",
+    "learnMore": "En savoir plus",
+    "viewAll": "Voir tout",
+    "present": "Présent"
+  }
+}

@@ -3,6 +3,7 @@
 import React from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts'
 import { BarChart3, TrendingUp, Activity } from 'lucide-react'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 
 interface Project {
   _id: string
@@ -29,6 +30,8 @@ interface AnalyticsSectionProps {
 }
 
 const AnalyticsSection: React.FC<AnalyticsSectionProps> = ({ projects, skills }) => {
+  const { t } = useLanguage()
+
   // Prepare chart data
   const projectStatsData = projects
     .filter(project => project.stats && project.stats.users)
@@ -63,15 +66,15 @@ const AnalyticsSection: React.FC<AnalyticsSectionProps> = ({ projects, skills })
     <section className="py-20 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-orange-100 text-orange-800 px-6 py-3 rounded-full mb-6">
+          <div className="inline-flex items-center gap-3 bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 px-6 py-3 rounded-full mb-6">
             <BarChart3 className="w-5 h-5" />
-            <span className="font-semibold">Data Insights</span>
+            <span className="font-semibold">{t.sections.dataInsights}</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Analytics & Performance
+            {t.sections.analytics}
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Visual representation of my projects' impact and skill development
+            {t.sections.analyticsSubtitle}
           </p>
         </div>
 
@@ -83,7 +86,7 @@ const AnalyticsSection: React.FC<AnalyticsSectionProps> = ({ projects, skills })
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
                   <TrendingUp className="w-4 h-4 text-white" />
                 </div>
-                Project User Engagement
+                {t.analytics.projectUserEngagement}
               </h3>
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
@@ -126,7 +129,7 @@ const AnalyticsSection: React.FC<AnalyticsSectionProps> = ({ projects, skills })
                 <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
                   <Activity className="w-4 h-4 text-white" />
                 </div>
-                Skills Proficiency
+                {t.analytics.skillsProficiency}
               </h3>
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">

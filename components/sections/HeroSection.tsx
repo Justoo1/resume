@@ -1,15 +1,18 @@
 'use client'
 
 import React from 'react'
+import { motion } from 'framer-motion'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Globe, 
-  Github, 
-  Linkedin, 
+import { ThemeToggle } from '@/components/ui/theme-toggle'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Globe,
+  Github,
+  Linkedin,
   User,
   Download
 } from 'lucide-react'
@@ -42,8 +45,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ personalInfo, onPrint }) => {
         <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-purple-400 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
       </div>
 
-      {/* Floating Download Button */}
-      <div className="absolute top-6 right-6 z-20 print:hidden">
+      {/* Floating Buttons */}
+      <div className="absolute top-6 right-6 z-20 print:hidden flex gap-3">
+        <LanguageSwitcher />
+        <ThemeToggle />
         <button
           onClick={onPrint}
           className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
@@ -55,12 +60,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ personalInfo, onPrint }) => {
       <div className="relative z-10 px-6 py-16 max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Profile Image Section */}
-          <div className="relative flex-shrink-0">
+          <motion.div
+            className="relative flex-shrink-0"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="w-64 h-64 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 p-1">
               <Avatar className="w-full h-full">
-                <AvatarImage 
-                  src={personalInfo?.profileImageUrl} 
-                  alt={personalInfo?.name} 
+                <AvatarImage
+                  src={personalInfo?.profileImageUrl}
+                  alt={personalInfo?.name}
                   className="rounded-full object-cover"
                 />
                 <AvatarFallback className="bg-gradient-to-br from-blue-100 to-indigo-100 text-slate-700 text-5xl font-bold">
@@ -69,15 +79,29 @@ const HeroSection: React.FC<HeroSectionProps> = ({ personalInfo, onPrint }) => {
               </Avatar>
             </div>
             {/* Decorative rings */}
-            <div className="absolute -inset-4 border-2 border-white/20 rounded-full animate-pulse"></div>
+            <motion.div
+              className="absolute -inset-4 border-2 border-white/20 rounded-full"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
             <div className="absolute -inset-8 border border-white/10 rounded-full"></div>
-          </div>
+          </motion.div>
 
           {/* Name and Info */}
-          <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+          <motion.div
+            className="flex-1 text-center lg:text-left"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <motion.h1
+              className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               {personalInfo?.name || 'Your Name'}
-            </h1>
+            </motion.h1>
             
             <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
               <div className="w-16 h-px bg-gradient-to-r from-blue-400 to-indigo-400"></div>
@@ -133,29 +157,38 @@ const HeroSection: React.FC<HeroSectionProps> = ({ personalInfo, onPrint }) => {
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center justify-center lg:justify-start gap-4">
+            <motion.div
+              className="flex items-center justify-center lg:justify-start gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
               {personalInfo?.github && (
-                <a 
-                  href={personalInfo.github} 
-                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full transition-all duration-300 hover:scale-110"
+                <motion.a
+                  href={personalInfo.github}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full transition-all duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Github className="w-6 h-6" />
-                </a>
+                </motion.a>
               )}
               {personalInfo?.linkedin && (
-                <a 
-                  href={personalInfo.linkedin} 
-                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full transition-all duration-300 hover:scale-110"
+                <motion.a
+                  href={personalInfo.linkedin}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full transition-all duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Linkedin className="w-6 h-6" />
-                </a>
+                </motion.a>
               )}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </div>

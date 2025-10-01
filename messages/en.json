@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "download": "Download Resume",
+    "viewProjects": "View Projects"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "sections": {
+    "workExperience": "Work Experience",
+    "workExperienceSubtitle": "My professional journey through various roles and companies",
+    "professionalJourney": "Professional Journey",
+    "methodology": "Methodology",
+    "methodologyTitle": "Process Documentation",
+    "methodologySubtitle": "Systematic approaches and methodologies I use to deliver high-quality software solutions",
+    "projects": "Featured Projects",
+    "projectsSubtitle": "A showcase of my latest work and technical achievements",
+    "portfolio": "Portfolio",
+    "caseStudies": "Case Studies",
+    "caseStudiesSubtitle": "Real-world projects and solutions delivered for enterprise clients and organizations",
+    "professionalWork": "Professional Work",
+    "skills": "Skills & Expertise",
+    "skillsEducation": "Skills & Education",
+    "skillsEducationSubtitle": "My technical skills, educational background, and professional certifications",
+    "expertise": "Expertise",
+    "technicalSkills": "Technical Skills",
+    "education": "Education",
+    "certifications": "Certifications",
+    "analytics": "Analytics & Performance",
+    "analyticsSubtitle": "Visual representation of my projects' impact and skill development",
+    "dataInsights": "Data Insights",
+    "contact": "Get In Touch"
+  },
+  "projects": {
+    "featured": "Featured",
+    "viewCode": "View Code",
+    "liveDemo": "Live Demo",
+    "projectImpact": "Project Impact",
+    "users": "Users",
+    "uptime": "Uptime",
+    "revenue": "Revenue",
+    "tasks": "Tasks",
+    "dataPoints": "Data Points"
+  },
+  "caseStudies": {
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "results": "Results",
+    "myRole": "My Role & Contributions",
+    "technologiesUsed": "Technologies Used",
+    "performanceBoost": "Performance Boost",
+    "usersImpacted": "Users Impacted",
+    "timeSaved": "Time Saved",
+    "costSavings": "Cost Savings",
+    "teamMembers": "team members",
+    "showMore": "Show More Details",
+    "showLess": "Show Less"
+  },
+  "analytics": {
+    "projectUserEngagement": "Project User Engagement",
+    "skillsProficiency": "Skills Proficiency Distribution",
+    "growthOverTime": "Growth Over Time",
+    "projects": "Projects",
+    "skills": "Skills"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a question or want to work together? Send me a message!",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "What's this about?",
+      "message": "Message",
+      "messagePlaceholder": "Your message here...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Failed to send message. Please try again or email me directly."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts, tutorials, and insights on software development, design, and technology",
+    "readMore": "Read More",
+    "backToBlog": "Back to Blog",
+    "backToAllPosts": "Back to all posts",
+    "minRead": "min read",
+    "publishedOn": "Published on",
+    "noPosts": "No blog posts yet. Check back soon!"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "builtWith": "Built with Next.js, TypeScript, and Sanity CMS"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "present": "Present"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "download": "Lebenslauf Herunterladen",
+    "viewProjects": "Projekte Ansehen"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "about": "Über",
+    "experience": "Erfahrung",
+    "projects": "Projekte",
+    "skills": "Fähigkeiten",
+    "blog": "Blog",
+    "contact": "Kontakt"
+  },
+  "sections": {
+    "workExperience": "Berufserfahrung",
+    "workExperienceSubtitle": "Meine berufliche Laufbahn durch verschiedene Rollen und Unternehmen",
+    "professionalJourney": "Beruflicher Werdegang",
+    "methodology": "Methodik",
+    "methodologyTitle": "Prozessdokumentation",
+    "methodologySubtitle": "Systematische Ansätze und Methoden, die ich verwende, um hochwertige Softwarelösungen zu liefern",
+    "projects": "Ausgewählte Projekte",
+    "projectsSubtitle": "Eine Präsentation meiner neuesten Arbeiten und technischen Errungenschaften",
+    "portfolio": "Portfolio",
+    "caseStudies": "Fallstudien",
+    "caseStudiesSubtitle": "Reale Projekte und Lösungen für Unternehmenskunden und Organisationen",
+    "professionalWork": "Professionelle Arbeit",
+    "skills": "Fähigkeiten & Expertise",
+    "skillsEducation": "Fähigkeiten & Bildung",
+    "skillsEducationSubtitle": "Meine technischen Fähigkeiten, mein Bildungshintergrund und meine professionellen Zertifizierungen",
+    "expertise": "Expertise",
+    "technicalSkills": "Technische Fähigkeiten",
+    "education": "Bildung",
+    "certifications": "Zertifizierungen",
+    "analytics": "Analytik & Leistung",
+    "analyticsSubtitle": "Visuelle Darstellung der Auswirkungen meiner Projekte und der Entwicklung meiner Fähigkeiten",
+    "dataInsights": "Dateneinblicke",
+    "contact": "Kontakt Aufnehmen"
+  },
+  "projects": {
+    "featured": "Hervorgehoben",
+    "viewCode": "Code Ansehen",
+    "liveDemo": "Live-Demo",
+    "projectImpact": "Projektauswirkung",
+    "users": "Benutzer",
+    "uptime": "Betriebszeit",
+    "revenue": "Umsatz",
+    "tasks": "Aufgaben",
+    "dataPoints": "Datenpunkte"
+  },
+  "caseStudies": {
+    "challenge": "Herausforderung",
+    "solution": "Lösung",
+    "results": "Ergebnisse",
+    "myRole": "Meine Rolle & Beiträge",
+    "technologiesUsed": "Verwendete Technologien",
+    "performanceBoost": "Leistungssteigerung",
+    "usersImpacted": "Betroffene Benutzer",
+    "timeSaved": "Zeitersparnis",
+    "costSavings": "Kosteneinsparungen",
+    "teamMembers": "Teammitglieder",
+    "showMore": "Mehr Details Anzeigen",
+    "showLess": "Weniger Anzeigen"
+  },
+  "analytics": {
+    "projectUserEngagement": "Projekt-Benutzerinteraktion",
+    "skillsProficiency": "Verteilung der Kompetenzen",
+    "growthOverTime": "Wachstum im Laufe der Zeit",
+    "projects": "Projekte",
+    "skills": "Fähigkeiten"
+  },
+  "contact": {
+    "title": "Kontakt Aufnehmen",
+    "subtitle": "Haben Sie eine Frage oder möchten zusammenarbeiten? Senden Sie mir eine Nachricht!",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Ihr Name",
+      "email": "E-Mail",
+      "emailPlaceholder": "ihre.email@beispiel.com",
+      "subject": "Betreff",
+      "subjectPlaceholder": "Worum geht es?",
+      "message": "Nachricht",
+      "messagePlaceholder": "Ihre Nachricht hier...",
+      "submit": "Nachricht Senden",
+      "sending": "Senden...",
+      "success": "Nachricht erfolgreich gesendet! Ich werde mich bald bei Ihnen melden.",
+      "error": "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut oder senden Sie mir direkt eine E-Mail."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Gedanken, Tutorials und Einblicke in Softwareentwicklung, Design und Technologie",
+    "readMore": "Mehr Lesen",
+    "backToBlog": "Zurück zum Blog",
+    "backToAllPosts": "Zurück zu allen Beiträgen",
+    "minRead": "Min. Lesezeit",
+    "publishedOn": "Veröffentlicht am",
+    "noPosts": "Noch keine Blog-Beiträge. Schauen Sie bald wieder vorbei!"
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten",
+    "builtWith": "Erstellt mit Next.js, TypeScript und Sanity CMS"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "readMore": "Weiterlesen",
+    "learnMore": "Mehr erfahren",
+    "viewAll": "Alle anzeigen",
+    "present": "Gegenwärtig"
+  }
+}

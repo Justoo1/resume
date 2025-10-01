@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { Code, Github, ExternalLink, Target, Zap, TrendingUp } from 'lucide-react'
 import Image from 'next/image'
 import { urlFor } from '@/lib/utils'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 
 interface Project {
   _id: string
@@ -30,66 +31,68 @@ interface ProjectsSectionProps {
 }
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
+  const { t } = useLanguage()
+
   if (projects.length === 0) return null
   console.log({projects})
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-gray-100">
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-slate-800">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-green-100 text-green-800 px-6 py-3 rounded-full mb-6">
+          <div className="inline-flex items-center gap-3 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-6 py-3 rounded-full mb-6">
             <Code className="w-5 h-5" />
-            <span className="font-semibold">Portfolio</span>
+            <span className="font-semibold">{t.sections.portfolio}</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
-            Featured Projects
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 dark:text-slate-100 mb-4">
+            {t.sections.projects}
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            A showcase of my latest work and technical achievements
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            {t.sections.projectsSubtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <div 
-              key={project._id} 
-              className={`bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${
+            <div
+              key={project._id}
+              className={`bg-white dark:bg-slate-800 rounded-3xl shadow-lg border border-gray-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${
                 index === 0 ? 'lg:col-span-2' : ''
               }`}
             >
               {/* Project Header */}
-              <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 border-b border-gray-100">
+              <div className="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 p-8 border-b border-gray-100 dark:border-slate-700">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       {project.featured && (
                         <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white">
-                          ⭐ Featured
+                          ⭐ {t.projects.featured}
                         </Badge>
                       )}
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-800 mb-3">{project.name}</h3>
-                    <p className="text-slate-600 leading-relaxed text-lg">{project.description}</p>
+                    <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-3">{project.name}</h3>
+                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">{project.description}</p>
                   </div>
-                  
+
                   <div className="flex gap-3 ml-6">
                     {project.github && (
-                      <a 
-                        href={project.github} 
-                        className="bg-gray-800 hover:bg-gray-900 text-white p-3 rounded-xl transition-all duration-300 hover:scale-110 shadow-lg"
+                      <a
+                        href={project.github}
+                        className="bg-gray-800 hover:bg-gray-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white p-3 rounded-xl transition-all duration-300 hover:scale-110 shadow-lg"
                         target="_blank"
                         rel="noopener noreferrer"
-                        title="View Code"
+                        title={t.projects.viewCode}
                       >
                         <Github className="w-5 h-5" />
                       </a>
                     )}
                     {project.liveUrl && (
-                      <a 
-                        href={project.liveUrl} 
+                      <a
+                        href={project.liveUrl}
                         className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white p-3 rounded-xl transition-all duration-300 hover:scale-110 shadow-lg"
                         target="_blank"
                         rel="noopener noreferrer"
-                        title="Live Demo"
+                        title={t.projects.liveDemo}
                       >
                         <ExternalLink className="w-5 h-5" />
                       </a>
@@ -100,10 +103,10 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <Badge 
-                      key={tech} 
-                      variant="outline" 
-                      className="border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
+                    <Badge
+                      key={tech}
+                      variant="outline"
+                      className="border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
                     >
                       {tech}
                     </Badge>
@@ -116,48 +119,48 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
               {/* Project Stats */}
               {project.stats && Object.values(project.stats).some(stat => stat && stat > 0) && (
                 <div className="p-8">
-                  <h4 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
+                  <h4 className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-4 flex items-center gap-2">
                     <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
-                    Project Impact
+                    {t.projects.projectImpact}
                   </h4>
                   
                   <div className="grid grid-cols-3 gap-6">
                     {project.stats.users && (
-                      <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl">
+                      <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl">
                         <div className="flex items-center justify-center gap-2 mb-2">
-                          <Target className="w-5 h-5 text-blue-600" />
-                          <span className="font-bold text-blue-600 text-2xl">
+                          <Target className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                          <span className="font-bold text-blue-600 dark:text-blue-400 text-2xl">
                             {project.stats.users.toLocaleString()}
                           </span>
                         </div>
-                        <div className="text-sm text-gray-600 font-medium uppercase tracking-wide">Users</div>
+                        <div className="text-sm text-gray-600 dark:text-slate-400 font-medium uppercase tracking-wide">{t.projects.users}</div>
                       </div>
                     )}
-                    
+
                     {project.stats.uptime && (
-                      <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl">
+                      <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl">
                         <div className="flex items-center justify-center gap-2 mb-2">
-                          <Zap className="w-5 h-5 text-green-600" />
-                          <span className="font-bold text-green-600 text-2xl">{project.stats.uptime}%</span>
+                          <Zap className="w-5 h-5 text-green-600 dark:text-green-400" />
+                          <span className="font-bold text-green-600 dark:text-green-400 text-2xl">{project.stats.uptime}%</span>
                         </div>
-                        <div className="text-sm text-gray-600 font-medium uppercase tracking-wide">Uptime</div>
+                        <div className="text-sm text-gray-600 dark:text-slate-400 font-medium uppercase tracking-wide">{t.projects.uptime}</div>
                       </div>
                     )}
-                    
+
                     {(project.stats.sales || project.stats.tasks || project.stats.dataPoints) && (
-                      <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
+                      <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
                         <div className="flex items-center justify-center gap-2 mb-2">
-                          <TrendingUp className="w-5 h-5 text-purple-600" />
-                          <span className="font-bold text-purple-600 text-2xl">
-                            {project.stats.sales ? `$${(project.stats.sales / 1000).toFixed(0)}k` : 
+                          <TrendingUp className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                          <span className="font-bold text-purple-600 dark:text-purple-400 text-2xl">
+                            {project.stats.sales ? `$${(project.stats.sales / 1000).toFixed(0)}k` :
                              project.stats.tasks ? `${(project.stats.tasks / 1000).toFixed(0)}k` :
                              project.stats.dataPoints ? `${(project.stats.dataPoints / 1000000).toFixed(1)}M` : ''}
                           </span>
                         </div>
-                        <div className="text-sm text-gray-600 font-medium uppercase tracking-wide">
-                          {project.stats.sales ? 'Revenue' : 
-                           project.stats.tasks ? 'Tasks' : 
-                           project.stats.dataPoints ? 'Data Points' : ''}
+                        <div className="text-sm text-gray-600 dark:text-slate-400 font-medium uppercase tracking-wide">
+                          {project.stats.sales ? t.projects.revenue :
+                           project.stats.tasks ? t.projects.tasks :
+                           project.stats.dataPoints ? t.projects.dataPoints : ''}
                         </div>
                       </div>
                     )}

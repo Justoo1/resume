@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "download": "Descargar CV",
+    "viewProjects": "Ver Proyectos"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "sections": {
+    "workExperience": "Experiencia Laboral",
+    "workExperienceSubtitle": "Mi trayectoria profesional a través de varios roles y empresas",
+    "professionalJourney": "Trayectoria Profesional",
+    "methodology": "Metodología",
+    "methodologyTitle": "Documentación de Procesos",
+    "methodologySubtitle": "Enfoques sistemáticos y metodologías que utilizo para ofrecer soluciones de software de alta calidad",
+    "projects": "Proyectos Destacados",
+    "projectsSubtitle": "Una muestra de mi trabajo más reciente y logros técnicos",
+    "portfolio": "Portafolio",
+    "caseStudies": "Casos de Estudio",
+    "caseStudiesSubtitle": "Proyectos y soluciones del mundo real entregados para clientes empresariales y organizaciones",
+    "professionalWork": "Trabajo Profesional",
+    "skills": "Habilidades y Experiencia",
+    "skillsEducation": "Habilidades y Educación",
+    "skillsEducationSubtitle": "Mis habilidades técnicas, formación académica y certificaciones profesionales",
+    "expertise": "Experiencia",
+    "technicalSkills": "Habilidades Técnicas",
+    "education": "Educación",
+    "certifications": "Certificaciones",
+    "analytics": "Análisis y Rendimiento",
+    "analyticsSubtitle": "Representación visual del impacto de mis proyectos y desarrollo de habilidades",
+    "dataInsights": "Información de Datos",
+    "contact": "Contactar"
+  },
+  "projects": {
+    "featured": "Destacado",
+    "viewCode": "Ver Código",
+    "liveDemo": "Demo en Vivo",
+    "projectImpact": "Impacto del Proyecto",
+    "users": "Usuarios",
+    "uptime": "Tiempo de Actividad",
+    "revenue": "Ingresos",
+    "tasks": "Tareas",
+    "dataPoints": "Puntos de Datos"
+  },
+  "caseStudies": {
+    "challenge": "Desafío",
+    "solution": "Solución",
+    "results": "Resultados",
+    "myRole": "Mi Rol y Contribuciones",
+    "technologiesUsed": "Tecnologías Utilizadas",
+    "performanceBoost": "Mejora de Rendimiento",
+    "usersImpacted": "Usuarios Impactados",
+    "timeSaved": "Tiempo Ahorrado",
+    "costSavings": "Ahorros de Costos",
+    "teamMembers": "miembros del equipo",
+    "showMore": "Mostrar Más Detalles",
+    "showLess": "Mostrar Menos"
+  },
+  "analytics": {
+    "projectUserEngagement": "Participación de Usuarios del Proyecto",
+    "skillsProficiency": "Distribución de Competencia en Habilidades",
+    "growthOverTime": "Crecimiento con el Tiempo",
+    "projects": "Proyectos",
+    "skills": "Habilidades"
+  },
+  "contact": {
+    "title": "Contactar",
+    "subtitle": "¿Tienes alguna pregunta o quieres trabajar juntos? ¡Envíame un mensaje!",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tu.correo@ejemplo.com",
+      "subject": "Asunto",
+      "subjectPlaceholder": "¿De qué se trata?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Tu mensaje aquí...",
+      "submit": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado con éxito! Me pondré en contacto pronto.",
+      "error": "Error al enviar el mensaje. Por favor, inténtalo de nuevo o envíame un correo directamente."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Pensamientos, tutoriales y perspectivas sobre desarrollo de software, diseño y tecnología",
+    "readMore": "Leer Más",
+    "backToBlog": "Volver al Blog",
+    "backToAllPosts": "Volver a todas las publicaciones",
+    "minRead": "min de lectura",
+    "publishedOn": "Publicado el",
+    "noPosts": "Aún no hay publicaciones en el blog. ¡Vuelve pronto!"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados",
+    "builtWith": "Construido con Next.js, TypeScript y Sanity CMS"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "readMore": "Leer más",
+    "learnMore": "Saber más",
+    "viewAll": "Ver todo",
+    "present": "Presente"
+  }
+}

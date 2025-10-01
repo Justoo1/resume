@@ -3,18 +3,19 @@
 import React, { useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { 
-  Briefcase, 
-  Target, 
-  Lightbulb, 
-  TrendingUp, 
-  Users, 
-  Clock, 
-  ChevronDown, 
+import {
+  Briefcase,
+  Target,
+  Lightbulb,
+  TrendingUp,
+  Users,
+  Clock,
+  ChevronDown,
   ChevronUp,
   Building2,
   Code2
 } from 'lucide-react'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 
 interface CaseStudy {
   _id: string
@@ -43,6 +44,7 @@ interface CaseStudiesSectionProps {
 }
 
 const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) => {
+  const { t } = useLanguage()
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
 
   const toggleCard = (id: string) => {
@@ -81,15 +83,15 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
     <section className="py-20 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-blue-100 text-blue-800 px-6 py-3 rounded-full mb-6">
+          <div className="inline-flex items-center gap-3 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-6 py-3 rounded-full mb-6">
             <Briefcase className="w-5 h-5" />
-            <span className="font-semibold">Professional Work</span>
+            <span className="font-semibold">{t.sections.professionalWork}</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Case Studies
+            {t.sections.caseStudies}
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Real-world projects and solutions delivered for enterprise clients and organizations
+            {t.sections.caseStudiesSubtitle}
           </p>
         </div>
 
@@ -120,7 +122,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                     </div>
                     <div className="flex items-center gap-1">
                       <Users className="w-4 h-4" />
-                      <span>{caseStudy.teamSize} team members</span>
+                      <span>{caseStudy.teamSize} {t.caseStudies.teamMembers}</span>
                     </div>
                   </div>
                 </CardHeader>
@@ -130,7 +132,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <Target className="w-5 h-5 text-red-400" />
-                      <h4 className="font-semibold text-red-300">Challenge</h4>
+                      <h4 className="font-semibold text-red-300">{t.caseStudies.challenge}</h4>
                     </div>
                     <p className="text-gray-300 leading-relaxed">
                       {caseStudy.challenge}
@@ -141,7 +143,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <Lightbulb className="w-5 h-5 text-yellow-400" />
-                      <h4 className="font-semibold text-yellow-300">Solution</h4>
+                      <h4 className="font-semibold text-yellow-300">{t.caseStudies.solution}</h4>
                     </div>
                     <p className="text-gray-300 leading-relaxed">
                       {isExpanded ? caseStudy.solution : `${caseStudy.solution.substring(0, 150)}...`}
@@ -152,7 +154,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <TrendingUp className="w-5 h-5 text-green-400" />
-                      <h4 className="font-semibold text-green-300">Results</h4>
+                      <h4 className="font-semibold text-green-300">{t.caseStudies.results}</h4>
                     </div>
                     <p className="text-gray-300 leading-relaxed mb-4">
                       {caseStudy.results}
@@ -166,7 +168,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                             <div className="text-2xl font-bold text-green-400">
                               {caseStudy.metrics.performanceImprovement}%
                             </div>
-                            <div className="text-xs text-gray-300">Performance Boost</div>
+                            <div className="text-xs text-gray-300">{t.caseStudies.performanceBoost}</div>
                           </div>
                         )}
                         {caseStudy.metrics.usersImpacted && (
@@ -174,7 +176,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                             <div className="text-2xl font-bold text-blue-400">
                               {caseStudy.metrics.usersImpacted.toLocaleString()}
                             </div>
-                            <div className="text-xs text-gray-300">Users Impacted</div>
+                            <div className="text-xs text-gray-300">{t.caseStudies.usersImpacted}</div>
                           </div>
                         )}
                         {caseStudy.metrics.timeReduction && (
@@ -182,7 +184,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                             <div className="text-2xl font-bold text-purple-400">
                               {caseStudy.metrics.timeReduction}%
                             </div>
-                            <div className="text-xs text-gray-300">Time Saved</div>
+                            <div className="text-xs text-gray-300">{t.caseStudies.timeSaved}</div>
                           </div>
                         )}
                         {caseStudy.metrics.costSavings && (
@@ -190,7 +192,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                             <div className="text-lg font-bold text-orange-400">
                               {caseStudy.metrics.costSavings}
                             </div>
-                            <div className="text-xs text-gray-300">Cost Savings</div>
+                            <div className="text-xs text-gray-300">{t.caseStudies.costSavings}</div>
                           </div>
                         )}
                       </div>
@@ -202,7 +204,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                     <div className="space-y-6 pt-4 border-t border-white/10">
                       {/* My Role */}
                       <div>
-                        <h4 className="font-semibold text-blue-300 mb-2">My Role & Contributions</h4>
+                        <h4 className="font-semibold text-blue-300 mb-2">{t.caseStudies.myRole}</h4>
                         <p className="text-gray-300 leading-relaxed">
                           {caseStudy.myRole}
                         </p>
@@ -210,7 +212,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
 
                       {/* Technologies */}
                       <div>
-                        <h4 className="font-semibold text-blue-300 mb-3">Technologies Used</h4>
+                        <h4 className="font-semibold text-blue-300 mb-3">{t.caseStudies.technologiesUsed}</h4>
                         <div className="flex flex-wrap gap-2">
                           {caseStudy.technologies.map((tech) => (
                             <Badge key={tech} className="bg-blue-500/20 text-blue-300 border-blue-500/30">
@@ -227,7 +229,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ caseStudies }) 
                     onClick={() => toggleCard(caseStudy._id)}
                     className="w-full flex items-center justify-center gap-2 py-3 mt-4 text-blue-400 hover:text-blue-300 transition-colors border-t border-white/10"
                   >
-                    <span>{isExpanded ? 'Show Less' : 'Show More Details'}</span>
+                    <span>{isExpanded ? t.caseStudies.showLess : t.caseStudies.showMore}</span>
                     {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
                 </CardContent>

@@ -9,6 +9,8 @@ import AnalyticsSection from './sections/AnalyticsSection'
 import { getAllData } from '@/lib/sanity'
 import CaseStudiesSection from './sections/CaseStudiesSection'
 import ProcessDocumentationSection from './sections/ProcessDocumentationSection'
+import { ContactForm } from './ContactForm'
+import { useLanguage } from './providers/LanguageProvider'
 
 // Types
 interface PersonalInfo {
@@ -118,6 +120,7 @@ interface CVData {
 }
 
 const ModernCVPortfolio = () => {
+  const { locale } = useLanguage()
   const [data, setData] = useState<CVData>({
     personalInfo: null,
     workExperience: [],
@@ -133,7 +136,8 @@ const ModernCVPortfolio = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const cvData = await getAllData()
+        setLoading(true)
+        const cvData = await getAllData(locale)
         setData(cvData)
       } catch (err) {
         console.error('Error fetching CV data:', err)
@@ -144,7 +148,7 @@ const ModernCVPortfolio = () => {
     }
 
     fetchData()
-  }, [])
+  }, [locale])
 
   const handlePrint = () => {
     window.print()
@@ -211,7 +215,10 @@ const ModernCVPortfolio = () => {
       
       {/* Analytics Section */}
       <AnalyticsSection projects={projects} skills={skills} />
-      
+
+      {/* Contact Form */}
+      <ContactForm />
+
       {/* Footer */}
       <footer className="bg-slate-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -223,10 +230,16 @@ const ModernCVPortfolio = () => {
               {personalInfo?.title || 'Your Professional Title'}
             </p>
           </div>
-          
-          <div className="flex justify-center gap-6 mb-8">
+
+          <div className="flex justify-center gap-6 mb-8 flex-wrap">
+            <a
+              href="/blog"
+              className="text-slate-300 hover:text-white transition-colors"
+            >
+              Blog
+            </a>
             {personalInfo?.email && (
-              <a 
+              <a
                 href={`mailto:${personalInfo.email}`}
                 className="text-slate-300 hover:text-white transition-colors"
               >
@@ -234,7 +247,7 @@ const ModernCVPortfolio = () => {
               </a>
             )}
             {personalInfo?.github && (
-              <a 
+              <a
                 href={personalInfo.github}
                 className="text-slate-300 hover:text-white transition-colors"
                 target="_blank"
@@ -244,7 +257,7 @@ const ModernCVPortfolio = () => {
               </a>
             )}
             {personalInfo?.linkedin && (
-              <a 
+              <a
                 href={personalInfo.linkedin}
                 className="text-slate-300 hover:text-white transition-colors"
                 target="_blank"
