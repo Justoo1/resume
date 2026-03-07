@@ -57,10 +57,16 @@ export default defineType({
     }),
     defineField({
       name: 'summary',
-      title: 'Professional Summary',
+      title: 'Professional Summary (Short)',
       type: 'text',
       rows: 4,
       validation: Rule => Rule.required()
+    }),
+    defineField({
+      name: 'bioLong',
+      title: 'Full Bio (Long)',
+      type: 'text',
+      rows: 8,
     }),
     defineField({
       name: 'profileImage',

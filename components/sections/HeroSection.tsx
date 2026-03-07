@@ -1,22 +1,9 @@
 'use client'
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-// import { Badge } from '@/components/ui/badge'
-import { ThemeToggle } from '@/components/ui/theme-toggle'
-import { LanguageSwitcher } from '@/components/LanguageSwitcher'
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Globe,
-  Github,
-  Linkedin,
-  User,
-  Download
-} from 'lucide-react'
-import { Button } from '../ui/button'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { User, MapPin, Cpu, Heart, Lightbulb, ChevronDown } from 'lucide-react'
+import { GithubIcon, LinkedinIcon } from '@/components/icons/BrandIcons'
 
 interface PersonalInfo {
   name: string
@@ -28,171 +15,209 @@ interface PersonalInfo {
   github?: string
   linkedin?: string
   summary: string
+  bioLong?: string
   profileImageUrl?: string
 }
 
 interface HeroSectionProps {
   personalInfo: PersonalInfo | null
-  onPrint: () => void
+  onPrint?: () => void
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ personalInfo, onPrint }) => {
+// Split the long bio into 4 thematic paragraphs
+function parseBio(bio: string): string[] {
+  const markers = ['My work spans', 'I care deeply', 'Outside of work']
+  const parts: string[] = []
+  let remaining = bio
+  for (const marker of markers) {
+    const idx = remaining.indexOf(marker)
+    if (idx === -1) continue
+    parts.push(remaining.slice(0, idx).trim())
+    remaining = remaining.slice(idx)
+  }
+  parts.push(remaining.trim())
+  return parts.filter(Boolean)
+}
+
+const BIO_CARDS = [
+  { icon: User,      label: 'Who I am'       },
+  { icon: Cpu,       label: 'What I build'    },
+  { icon: Heart,     label: 'How I work'      },
+  { icon: Lightbulb, label: 'Beyond the code' },
+]
+
+const HeroSection: React.FC<HeroSectionProps> = ({ personalInfo }) => {
+  const [storyOpen, setStoryOpen] = useState(false)
+
+  const bioParagraphs = personalInfo?.bioLong
+    ? parseBio(personalInfo.bioLong)
+    : []
+
   return (
-    <div className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-40 h-40 bg-blue-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-60 h-60 bg-indigo-400 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-purple-400 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-      </div>
+    <section className="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32 bg-white dark:bg-slate-900">
+      {/* Background blob */}
+      <div className="absolute top-0 right-0 -z-10 w-1/3 h-1/2 bg-brand/10 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Floating Buttons */}
-      <div className="absolute top-6 right-6 z-20 print:hidden flex gap-3">
-        <LanguageSwitcher />
-        <ThemeToggle />
-        <Button
-          onClick={onPrint}
-          className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        {/* ── Left ── */}
+        <motion.div
+          className="order-2 lg:order-1"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <Download className="w-5 h-5" />
-        </Button>
-      </div>
-      
-      <div className="relative z-10 px-6 py-16 max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Profile Image Section */}
-          <motion.div
-            className="relative flex-shrink-0"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="w-64 h-64 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 p-1">
-              <Avatar className="w-full h-full">
-                <AvatarImage
-                  src={personalInfo?.profileImageUrl}
-                  alt={personalInfo?.name}
-                  className="rounded-full object-cover"
-                />
-                <AvatarFallback className="bg-gradient-to-br from-blue-100 to-indigo-100 text-slate-700 text-5xl font-bold">
-                  {personalInfo?.name?.split(' ').map(n => n[0]).join('') || <User className="w-20 h-20" />}
-                </AvatarFallback>
-              </Avatar>
-            </div>
-            {/* Decorative rings */}
-            <motion.div
-              className="absolute -inset-4 border-2 border-white/20 rounded-full"
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <div className="absolute -inset-8 border border-white/10 rounded-full"></div>
-          </motion.div>
+          {/* Availability badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand" />
+            </span>
+            Available for New Projects
+          </div>
 
-          {/* Name and Info */}
-          <motion.div
-            className="flex-1 text-center lg:text-left"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <motion.h1
-              className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              {personalInfo?.name || 'Your Name'}
-            </motion.h1>
-            
-            <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
-              <div className="w-16 h-px bg-gradient-to-r from-blue-400 to-indigo-400"></div>
-              <p className="text-2xl lg:text-3xl text-blue-200 font-medium tracking-wide">
-                {personalInfo?.title || 'Your Professional Title'}
-              </p>
-              <div className="w-16 h-px bg-gradient-to-r from-indigo-400 to-blue-400"></div>
-            </div>
+          {/* Heading */}
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-6 text-slate-900 dark:text-white">
+            Senior Full-Stack{' '}
+            <span className="text-brand">Engineer.</span>
+          </h1>
 
-            {/* Summary */}
-            {personalInfo?.summary && (
-              <p className="text-blue-100 text-lg leading-relaxed mb-8 max-w-3xl">
-                {personalInfo.summary}
-              </p>
+          {/* Short summary */}
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-xl">
+            {personalInfo?.summary ??
+              'Building scalable, high-performance systems with a focus on modern architecture, clean code, and exceptional results.'}
+          </p>
+
+          {/* Location chip */}
+          {personalInfo?.location && (
+            <div className="flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400 mb-8">
+              <MapPin className="w-4 h-4 text-brand" />
+              {personalInfo.location}
+            </div>
+          )}
+
+          {/* CTA buttons */}
+          <div className="flex flex-wrap gap-4 mb-8">
+            {personalInfo?.github && (
+              <motion.a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 h-12 px-6 bg-brand text-white rounded-lg font-bold hover:bg-brand/90 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <GithubIcon className="w-5 h-5" />
+                View GitHub
+              </motion.a>
             )}
+            {personalInfo?.linkedin && (
+              <motion.a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 h-12 px-6 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-lg font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <LinkedinIcon className="w-5 h-5" />
+                LinkedIn Profile
+              </motion.a>
+            )}
+          </div>
 
-            {/* Contact Info Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-blue-100 mb-8">
-              {personalInfo?.email && (
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="bg-white/10 p-2 rounded-lg">
-                    <Mail className="w-5 h-5 text-blue-300" />
-                  </div>
-                  <span className="hover:text-white transition-colors">{personalInfo.email}</span>
-                </div>
-              )}
-              {personalInfo?.phone && (
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="bg-white/10 p-2 rounded-lg">
-                    <Phone className="w-5 h-5 text-blue-300" />
-                  </div>
-                  <span className="hover:text-white transition-colors">{personalInfo.phone}</span>
-                </div>
-              )}
-              {personalInfo?.location && (
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="bg-white/10 p-2 rounded-lg">
-                    <MapPin className="w-5 h-5 text-blue-300" />
-                  </div>
-                  <span className="hover:text-white transition-colors">{personalInfo.location}</span>
-                </div>
-              )}
-              {personalInfo?.website && (
-                <div className="flex items-center gap-3 justify-center lg:justify-start">
-                  <div className="bg-white/10 p-2 rounded-lg">
-                    <Globe className="w-5 h-5 text-blue-300" />
-                  </div>
-                  <a href={personalInfo.website} className="hover:text-white transition-colors">
-                    {personalInfo.website.replace('https://', '').replace('http://', '')}
-                  </a>
+          {/* "Read my story" toggle */}
+          {bioParagraphs.length > 0 && (
+            <button
+              onClick={() => setStoryOpen((o) => !o)}
+              className="flex items-center gap-2 text-sm font-bold text-brand hover:text-brand/80 transition-colors"
+            >
+              <span>{storyOpen ? 'Close story' : 'Read my full story'}</span>
+              <motion.div
+                animate={{ rotate: storyOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronDown className="w-4 h-4" />
+              </motion.div>
+            </button>
+          )}
+        </motion.div>
+
+        {/* ── Right: profile image ── */}
+        <motion.div
+          className="order-1 lg:order-2 flex justify-center lg:justify-end"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          <div className="relative w-full max-w-md aspect-square">
+            {/* Rotated accent */}
+            <div className="absolute -inset-4 bg-brand/20 rounded-3xl rotate-3 pointer-events-none" />
+
+            {/* Image frame */}
+            <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 bg-slate-200 dark:bg-slate-700">
+              {personalInfo?.profileImageUrl ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={personalInfo.profileImageUrl}
+                  alt={personalInfo.name}
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-brand/10">
+                  <User className="w-32 h-32 text-brand/30" />
                 </div>
               )}
             </div>
+          </div>
+        </motion.div>
 
-            {/* Social Links */}
-            <motion.div
-              className="flex items-center justify-center lg:justify-start gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              {personalInfo?.github && (
-                <motion.a
-                  href={personalInfo.github}
-                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full transition-all duration-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Github className="w-6 h-6" />
-                </motion.a>
-              )}
-              {personalInfo?.linkedin && (
-                <motion.a
-                  href={personalInfo.linkedin}
-                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full transition-all duration-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Linkedin className="w-6 h-6" />
-                </motion.a>
-              )}
-            </motion.div>
-          </motion.div>
-        </div>
       </div>
-    </div>
+
+      {/* ── Expandable Full Bio ── */}
+      <AnimatePresence>
+        {storyOpen && bioParagraphs.length > 0 && (
+          <motion.div
+            key="story"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.45, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-6 pt-12 pb-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {bioParagraphs.slice(0, 4).map((text, i) => {
+                  const card = BIO_CARDS[i] ?? BIO_CARDS[0]
+                  const Icon = card.icon
+                  return (
+                    <motion.div
+                      key={i}
+                      className="flex gap-4 p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700"
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35, delay: i * 0.08 }}
+                    >
+                      <div className="shrink-0 w-9 h-9 rounded-xl bg-brand/10 flex items-center justify-center mt-0.5">
+                        <Icon className="w-4 h-4 text-brand" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-brand mb-2">
+                          {card.label}
+                        </p>
+                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                          {text}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )
+                })}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   )
 }
 

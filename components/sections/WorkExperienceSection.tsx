@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Badge } from '@/components/ui/badge'
-import { Building, Calendar } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Briefcase, Layers } from 'lucide-react'
 import { PortableText, PortableTextBlock } from 'next-sanity'
-import { useLanguage } from '@/components/providers/LanguageProvider'
 
 interface WorkExperience {
   _id: string
@@ -21,106 +20,96 @@ interface WorkExperienceSectionProps {
   workExperience: WorkExperience[]
 }
 
+function formatYear(dateString: string) {
+  return new Date(dateString).getFullYear()
+}
+
 const WorkExperienceSection: React.FC<WorkExperienceSectionProps> = ({ workExperience }) => {
-  const { t, locale } = useLanguage()
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    const localeMap: Record<string, string> = {
-      'en': 'en-US',
-      'es': 'es-ES',
-      'fr': 'fr-FR',
-      'de': 'de-DE'
-    }
-    return date.toLocaleDateString(localeMap[locale] || 'en-US', { month: 'short', year: 'numeric' })
-  }
-
-  const calculateDuration = (startDate: string, endDate: string | null) => {
-    const start = new Date(startDate)
-    const end = endDate ? new Date(endDate) : new Date()
-    const months = (end.getFullYear() - start.getFullYear()) * 12 + end.getMonth() - start.getMonth()
-    const years = Math.floor(months / 12)
-    const remainingMonths = months % 12
-    
-    if (years === 0) return `${remainingMonths} months`
-    if (remainingMonths === 0) return `${years} year${years > 1 ? 's' : ''}`
-    return `${years} year${years > 1 ? 's' : ''} ${remainingMonths} months`
-  }
-
   if (workExperience.length === 0) return null
 
   return (
-    <section className="py-20 bg-gradient-to-br from-white to-blue-50 dark:from-slate-900 dark:to-slate-800">
+    <section className="py-24 bg-white dark:bg-slate-900" id="experience">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-6 py-3 rounded-full mb-6">
-            <Building className="w-5 h-5" />
-            <span className="font-semibold">{t.sections.professionalJourney}</span>
+
+        {/* Section header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <p className="text-sm font-bold text-brand uppercase tracking-widest mb-3">
+              Professional Journey
+            </p>
+            <h2 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">
+              Career Path
+            </h2>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 dark:text-slate-100 mb-4">
-            {t.sections.workExperience}
-          </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            {t.sections.workExperienceSubtitle}
+          <p className="text-slate-500 dark:text-slate-400 max-w-sm">
+            Building high-impact solutions across various industries, from fintech to enterprise ERP.
           </p>
         </div>
 
+        {/* Timeline */}
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-blue-300 to-blue-200 dark:from-blue-700 dark:via-blue-600 dark:to-blue-700 hidden lg:block"></div>
+          {/* Vertical line */}
+          <div className="absolute left-[19px] top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-slate-800" />
 
           <div className="space-y-12">
-            {workExperience.map((job) => (
-              <div key={job._id} className="relative">
-                {/* Timeline dot */}
-                <div className="absolute left-6 top-8 w-4 h-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full border-4 border-white dark:border-slate-800 shadow-lg hidden lg:block z-10">
-                  <div className="absolute -inset-2 bg-blue-200 dark:bg-blue-800 rounded-full animate-ping opacity-20"></div>
+            {workExperience.map((job, index) => (
+              <motion.div
+                key={job._id}
+                className="relative pl-12 group"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.4) }}
+              >
+                {/* Timeline icon */}
+                <div
+                  className={`absolute left-0 top-1 w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all duration-300 ring-8 ring-white dark:ring-slate-900 ${
+                    index === 0
+                      ? 'bg-brand text-white'
+                      : 'bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-300 group-hover:bg-brand group-hover:text-white'
+                  }`}
+                >
+                  {index === 0 ? (
+                    <Briefcase className="w-4 h-4" />
+                  ) : (
+                    <Layers className="w-4 h-4" />
+                  )}
                 </div>
 
-                <div className="lg:ml-20">
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-slate-700 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">{job.position}</h3>
-                        <div className="flex items-center gap-2 mb-4">
-                          <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full"></div>
-                          <p className="text-blue-600 dark:text-blue-400 font-semibold text-xl">{job.company}</p>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col items-start lg:items-end gap-2">
-                        <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
-                          <Calendar className="w-4 h-4" />
-                          <span className="text-sm font-medium">
-                            {formatDate(job.startDate)} - {job.endDate ? formatDate(job.endDate) : t.common.present}
-                          </span>
-                        </div>
-                        <Badge variant="outline" className="text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-700 bg-blue-50 dark:bg-blue-950">
-                          {calculateDuration(job.startDate, job.endDate || null)}
-                        </Badge>
-                      </div>
+                {/* Card */}
+                <div className="bg-white dark:bg-slate-800/50 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                        {job.position}
+                      </h3>
+                      <p className="text-brand font-medium mt-0.5">{job.company}</p>
                     </div>
+                    <span className="shrink-0 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-700 text-xs font-bold uppercase tracking-tight text-slate-600 dark:text-slate-300">
+                      {formatYear(job.startDate)} — {job.endDate ? formatYear(job.endDate) : 'Present'}
+                    </span>
+                  </div>
 
-                    {/* <p className="text-slate-600 leading-relaxed mb-6 text-lg">
-                      {job.description}
-                    </p> */}
-                    <div className="prose-sm dark:prose-invert pb-2">
-                      <PortableText value={job.description}  />
-                    </div>
-                    
+                  {/* Description (PortableText) */}
+                  <div className="prose prose-sm dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                    <PortableText value={job.description} />
+                  </div>
+
+                  {/* Tech tags */}
+                  {job.technologies.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {job.technologies.map((tech) => (
-                        <Badge 
-                          key={tech} 
-                          className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700 transition-all duration-200"
+                        <span
+                          key={tech}
+                          className="text-xs font-semibold px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-md"
                         >
                           {tech}
-                        </Badge>
+                        </span>
                       ))}
                     </div>
-                  </div>
+                  )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

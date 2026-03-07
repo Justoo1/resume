@@ -21,6 +21,7 @@ export const queries = {
     github,
     linkedin,
     summary,
+    bioLong,
     "profileImageUrl": profileImage.asset->url
   }`,
 

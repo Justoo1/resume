@@ -1,0 +1,475 @@
+{
+  "profile": {
+    "name": "Justice Amankrah",
+    "title": "Senior Full-Stack Engineer & Technical Team Lead",
+    "tagline": "Building scalable systems, leading cross-continental teams, integrating AI into enterprise workflows.",
+    "bio_short": "Senior Full-Stack Engineer with 6+ years of experience designing and delivering production-grade applications across Africa, the US, UAE, and Australia. I specialise in the Python and React/Next.js ecosystems, lead teams of engineers through complex architectural migrations, and integrate AI to solve real operational problems.",
+    "bio_long": "I'm Justice Amankrah — a Senior Full-Stack Engineer and Technical Team Lead based in Accra, Ghana, with over six years of hands-on experience turning complex requirements into scalable, maintainable software.My work spans the full stack: from architecting FastAPI microservices backends and building RAG pipelines with LangChain, to crafting performant React/Next.js frontends and managing CI/CD pipelines across distributed infrastructure. I currently lead a team of five engineers at DevOps Africa Limited, coordinating across the US, UAE, and Australia time zones to deliver enterprise systems for international clients.I care deeply about clean architecture, developer experience, and building tools that non-technical users can actually use. Whether it's migrating a legacy Odoo monolith, implementing an AI-powered document search system, or delivering a pixel-perfect SaaS product from a Figma file — I bring the same discipline and attention to detail to every project.Outside of work, I'm passionate about the African tech ecosystem, exploring startup opportunities suited to the Ghanaian market, and mentoring the next generation of engineers.",
+    "location": "Accra, Ghana",
+    "email": "amankrahjay@gmail.com",
+    "phone": "+233 54 913 2837",
+    "github": "https://github.com/Justoo1",
+    "linkedin": "https://www.linkedin.com/in/jay-amankrah-95111a173/",
+    "website": "https://justice.edtmsys.com",
+    "availability": "Open to relocation — EU Blue Card eligible",
+    "languages": ["English (C2 Fluent)", "Twi (Fluent)", "Nzema (Fluent)", "French (Basic)"]
+  },
+
+  "skills": [
+    {
+      "category": "Frontend",
+      "icon": "monitor",
+      "level": "Expert",
+      "skills": [
+        { "name": "React", "level": 95 },
+        { "name": "Next.js (App Router)", "level": 95 },
+        { "name": "TypeScript", "level": 90 },
+        { "name": "Tailwind CSS", "level": 92 },
+        { "name": "Shadcn/UI", "level": 85 },
+        { "name": "React Native", "level": 75 }
+      ]
+    },
+    {
+      "category": "Backend",
+      "icon": "server",
+      "level": "Expert",
+      "skills": [
+        { "name": "Python (FastAPI)", "level": 95 },
+        { "name": "Python (Django)", "level": 90 },
+        { "name": "Node.js", "level": 88 },
+        { "name": "Golang", "level": 75 },
+        { "name": "GraphQL", "level": 78 },
+        { "name": "RESTful APIs", "level": 97 }
+      ]
+    },
+    {
+      "category": "AI / ML",
+      "icon": "brain",
+      "level": "Advanced",
+      "skills": [
+        { "name": "LangChain", "level": 85 },
+        { "name": "RAG Pipelines", "level": 85 },
+        { "name": "MLflow", "level": 78 },
+        { "name": "OpenAI API", "level": 88 },
+        { "name": "Hugging Face", "level": 72 },
+        { "name": "Vector Databases", "level": 80 }
+      ]
+    },
+    {
+      "category": "DevOps & Cloud",
+      "icon": "cloud",
+      "level": "Advanced",
+      "skills": [
+        { "name": "Docker", "level": 90 },
+        { "name": "GitLab CI/CD", "level": 88 },
+        { "name": "GitHub Actions", "level": 85 },
+        { "name": "AWS (EC2, S3, Lambda)", "level": 80 },
+        { "name": "NGINX", "level": 85 },
+        { "name": "Kubernetes", "level": 70 }
+      ]
+    },
+    {
+      "category": "Databases",
+      "icon": "database",
+      "level": "Advanced",
+      "skills": [
+        { "name": "PostgreSQL", "level": 92 },
+        { "name": "Redis", "level": 82 },
+        { "name": "MongoDB", "level": 78 },
+        { "name": "MySQL", "level": 80 },
+        { "name": "Prisma ORM", "level": 80 }
+      ]
+    },
+    {
+      "category": "Enterprise & ERP",
+      "icon": "briefcase",
+      "level": "Expert",
+      "skills": [
+        { "name": "Odoo ERP (Dev & Admin)", "level": 92 },
+        { "name": "Agile / Scrum", "level": 90 },
+        { "name": "Git-flow", "level": 92 },
+        { "name": "Jira", "level": 85 },
+        { "name": "Sanity CMS", "level": 82 }
+      ]
+    }
+  ],
+
+  "work_experience": [
+    {
+      "title": "Lead Software Engineer / Technical Team Lead",
+      "company": "DevOps Africa Limited (Attentive Science)",
+      "location": "Remote — Accra, Ghana (US, UAE, Australia clients)",
+      "start_date": "2023-01",
+      "end_date": null,
+      "current": true,
+      "summary": "Leading a cross-continental engineering team through a major microservices migration, AI integration, and enterprise ERP development for international clients across healthcare, pharmaceutical, and operations sectors.",
+      "responsibilities": [
+        "Architected the migration of 20+ enterprise Odoo monolithic applications into a modern FastAPI microservices platform, improving deployment speed by 40% and system modularity.",
+        "Lead and mentor a team of 5 engineers using Agile/Scrum, coordinating across three continents with async standups and Git-flow collaboration.",
+        "Built a custom API Gateway with JWT authentication and Redis caching, reducing internal service latency by 25%.",
+        "Implemented RAG (Retrieval-Augmented Generation) pipelines using LangChain and vector databases to automate internal document querying for non-technical users.",
+        "Integrated MLflow into AI development workflows to track experiments and manage model versioning for production inference.",
+        "Managed GitLab CI/CD pipelines for multi-branch deployments across US, AU, and UAE regional branches, ensuring zero-downtime releases.",
+        "Developed custom Odoo modules including order locking with audit trails, barcode inventory systems, payslip management, and organisational chart visualisations.",
+        "Built AI-powered FDA compliance data extraction system using Ollama, LangChain, and DeepSeek AI models with Django web interface."
+      ],
+      "achievements": [
+        "Reduced deployment time by 40% through microservices migration",
+        "Reduced internal service latency by 25% with Redis caching layer",
+        "Improved data processing efficiency by 85% via AI-powered FDA compliance system",
+        "Maintained 99.9% uptime across all managed applications",
+        "Led migration of 3 major websites from legacy systems to modern frameworks"
+      ],
+      "technologies": ["Python", "FastAPI", "Django", "Next.js", "TypeScript", "React", "Tailwind CSS", "LangChain", "MLflow", "OpenAI API", "Odoo", "PostgreSQL", "Redis", "Docker", "GitLab CI", "NGINX", "AWS", "Kubernetes"]
+    },
+    {
+      "title": "Full-Stack Developer",
+      "company": "AttentiveScience",
+      "location": "Remote — US",
+      "start_date": "2022-05",
+      "end_date": "2023-01",
+      "current": false,
+      "summary": "Built and maintained full-stack web applications for a US-based SaaS company, delivering features that improved user engagement by 50% while conducting security audits and performance optimisations.",
+      "responsibilities": [
+        "Built and maintained full-stack web applications using React, Next.js, Node.js, TypeScript, and PostgreSQL.",
+        "Designed RESTful APIs and optimised database queries for real-time data synchronisation across multiple application modules.",
+        "Conducted security audits and performance optimisations, reducing vulnerabilities by 25% and significantly improving response times.",
+        "Implemented automated CI/CD pipelines, reducing deployment time by 30%.",
+        "Collaborated with product managers and designers in Agile sprints to deliver pixel-perfect UIs from Figma designs."
+      ],
+      "achievements": [
+        "Improved user engagement by 50% through feature delivery",
+        "Reduced vulnerabilities by 25% through security auditing",
+        "Reduced deployment time by 30% via CI/CD automation"
+      ],
+      "technologies": ["React", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "Docker", "GitHub Actions", "Tailwind CSS"]
+    },
+    {
+      "title": "IT Personnel / System Administrator",
+      "company": "Electoral Commission of Ghana",
+      "location": "Accra, Ghana",
+      "start_date": "2021-09",
+      "end_date": "2022-05",
+      "current": false,
+      "summary": "National Service posting managing IT infrastructure for a national-scale government organisation during electoral operations, voter registration exercises, and day-to-day IT support.",
+      "responsibilities": [
+        "Managed IT infrastructure for a national-scale government organisation, ensuring uptime during high-stakes electoral operations.",
+        "Maintained computer systems, networks, and databases supporting democratic processes and voter registration activities.",
+        "Compiled data from personnel records and prepared reports to support senior decision-making.",
+        "Provided IT training and technical support to field staff and office personnel."
+      ],
+      "achievements": [
+        "Ensured 100% system uptime during voter registration exercises",
+        "Streamlined IT support workflows, reducing average issue resolution time"
+      ],
+      "technologies": ["Windows Server", "Network Administration", "Python", "JavaScript", "Database Management"]
+    },
+    {
+      "title": "Full-Stack Developer",
+      "company": "Ultra Dev Ghana",
+      "location": "Ghana",
+      "start_date": "2017-01",
+      "end_date": "2019-12",
+      "current": false,
+      "summary": "Delivered 8+ SaaS products for Ghanaian clients, including a Barcode Inventory Management System and multiple web applications, achieving 99.9% uptime through containerised AWS deployments.",
+      "responsibilities": [
+        "Delivered 8+ SaaS products using React and Next.js with pixel-perfect implementation from Figma designs.",
+        "Built a Barcode Inventory Management System integrated with a Python backend, reducing manual processing errors by 70% across multi-location warehouses.",
+        "Optimised frontend performance using code-splitting and lazy loading, improving Google Lighthouse scores from 65 to 95+.",
+        "Deployed containerised applications on AWS (Docker + NGINX), achieving 99.9% uptime for all client services."
+      ],
+      "achievements": [
+        "Reduced manual processing errors by 70% with inventory system",
+        "Improved Google Lighthouse performance scores from 65 to 95+",
+        "Maintained 99.9% uptime across all client deployments"
+      ],
+      "technologies": ["React", "Next.js", "Python", "Django", "Docker", "NGINX", "AWS EC2", "PostgreSQL", "Bootstrap"]
+    },
+    {
+      "title": "Junior Developer Intern",
+      "company": "Livestream Technology",
+      "location": "Coimbatore, India",
+      "start_date": "2019-06",
+      "end_date": "2019-12",
+      "current": false,
+      "summary": "International internship developing enterprise software and gaining exposure to Java/Python development practices.",
+      "responsibilities": [
+        "Developed an Internal Marks Management System using Django and JavaScript.",
+        "Trained staff on system usage, improving internal workflows.",
+        "Assisted in Java and Python training sessions, boosting team skills."
+      ],
+      "achievements": [
+        "Successfully delivered Internal Marks Management System within internship period"
+      ],
+      "technologies": ["Python", "Django", "JavaScript", "Java", "MySQL"]
+    }
+  ],
+
+  "projects": [
+    {
+      "title": "AI-Powered Enterprise Search (FDA Compliance System)",
+      "slug": "ai-enterprise-search",
+      "category": "AI / ML",
+      "status": "Production",
+      "featured": true,
+      "year": 2024,
+      "summary": "A natural language querying system built for pharmaceutical clients to extract and query clinical and non-clinical domain data for FDA SENDIG submission. Reduced data processing time by 85%.",
+      "description": "Enterprise-grade AI document search tool that allows non-technical pharmaceutical researchers to query complex ERP data using plain English. Built with a local AI infrastructure using Ollama, LangChain, and DeepSeek AI models — keeping sensitive data on-premises. The system generates SENDIG-compliant .XPT files for FDA submission, automating what was previously a manual, error-prone process.",
+      "problem": "Pharmaceutical researchers needed to query and compile FDA-compliant clinical trial data from a complex ERP system, but lacked technical skills. Manual data extraction was slow and error-prone.",
+      "solution": "Built a RAG pipeline over the ERP database with a conversational interface, allowing users to ask questions in plain English and receive structured, compliance-ready outputs.",
+      "impact": [
+        "85% improvement in data processing efficiency",
+        "Eliminated manual data extraction errors",
+        "SENDIG-compliant .XPT file generation fully automated",
+        "Non-technical staff can now self-serve data queries"
+      ],
+      "technologies": ["Python", "Django", "LangChain", "Ollama", "DeepSeek AI", "Claude AI API", "FastAPI", "PostgreSQL", "Bootstrap", "Docker"],
+      "github": null,
+      "live_url": null,
+      "image_prompt": "AI dashboard showing pharmaceutical data extraction with charts and query interface, dark blue enterprise UI"
+    },
+    {
+      "title": "FastAPI Microservices Migration Framework",
+      "slug": "fastapi-microservices-migration",
+      "category": "Backend / Architecture",
+      "status": "Production",
+      "featured": true,
+      "year": 2023,
+      "summary": "Architected and executed the migration of 20+ enterprise Odoo monolithic applications into a modern FastAPI microservices architecture for international clients, improving deployment speed by 40%.",
+      "description": "Led a full architectural overhaul replacing a tightly coupled Odoo monolith with independently deployable FastAPI microservices. Included designing a custom API Gateway with JWT auth, Redis caching, service discovery, and a reusable Python migration framework for extracting and transforming legacy Odoo data into clean PostgreSQL schemas.",
+      "problem": "A suite of 20+ enterprise Odoo applications had grown into an unmaintainable monolith. Deployments were slow and risky, and individual services could not scale independently.",
+      "solution": "Designed a microservices architecture with a custom API Gateway, implemented Redis caching, and built reusable migration scripts to transform legacy data. Introduced Git-flow and CI/CD pipelines for reliable multi-region deployments.",
+      "impact": [
+        "40% improvement in deployment speed",
+        "25% reduction in internal service latency",
+        "Zero-downtime deployments across US, UAE, and Australia regions",
+        "Independent scalability for each microservice"
+      ],
+      "technologies": ["Python", "FastAPI", "Redis", "PostgreSQL", "Docker", "GitLab CI", "JWT", "NGINX", "Kubernetes", "Odoo"],
+      "github": null,
+      "live_url": null,
+      "image_prompt": "Microservices architecture diagram with API gateway, multiple services, and database connections on dark background"
+    },
+    {
+      "title": "GMAK Properties — Real Estate Web & Management System",
+      "slug": "gmak-properties",
+      "category": "Full-Stack Web",
+      "status": "Production",
+      "featured": true,
+      "year": 2024,
+      "summary": "Full real estate management platform for GMAK Properties Ghana, combining a modern marketing website with an Odoo-powered backend for property listings, client management, and operations.",
+      "description": "End-to-end freelance project delivering a professional real estate web presence and management backend for a Ghanaian property company. The marketing site showcases property listings with search and filtering, while the Odoo backend manages leads, contracts, properties, and communications. Hosted on a Hostinger VPS with NGINX and SSL.",
+      "problem": "GMAK Properties needed a professional online presence and an internal system to manage properties, leads, and client relationships — without expensive off-the-shelf real estate platforms.",
+      "solution": "Built a custom Next.js marketing website integrated with an Odoo CRM/property management backend, hosted on a self-managed Hostinger VPS with full SSL and NGINX configuration.",
+      "impact": [
+        "Professional online presence for property listings",
+        "Streamlined lead and client management in Odoo",
+        "Reduced operational overhead with automated workflows",
+        "Self-hosted solution saving ongoing SaaS subscription costs"
+      ],
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Odoo", "Python", "PostgreSQL", "NGINX", "Docker", "Hostinger VPS"],
+      "github": null,
+      "live_url": "https://gmakpropertiesgh.com",
+      "image_prompt": "Real estate website with property listings grid, modern dark theme, Ghana-based property company"
+    },
+    {
+      "title": "Live AI CV Optimisation Platform",
+      "slug": "ai-cv-platform",
+      "category": "AI / Full-Stack",
+      "status": "Production",
+      "featured": true,
+      "year": 2024,
+      "summary": "A real-time AI-powered CV enhancement platform that analyses uploaded CVs against job descriptions and returns tailored, ATS-optimised recommendations instantly.",
+      "description": "Web platform where job seekers upload their CV and a target job description, and the system uses LLM-powered analysis to return specific, actionable improvements tailored to the role. Built with a FastAPI backend, React frontend, and OpenAI API integration. Deployed at cv.edtmsys.com.",
+      "problem": "Job seekers struggle to tailor CVs for specific roles and pass ATS filters without expensive career coaching.",
+      "solution": "Built a self-serve AI platform that performs instant CV analysis against job descriptions, highlighting gaps and suggesting specific improvements using LLM-powered NLP.",
+      "impact": [
+        "Instant CV analysis in seconds",
+        "ATS-optimised output for each job description",
+        "Self-serve — no career coach needed",
+        "Deployed and serving live users"
+      ],
+      "technologies": ["React", "Next.js", "FastAPI", "Python", "OpenAI API", "TypeScript", "Tailwind CSS", "PostgreSQL", "Docker"],
+      "github": null,
+      "live_url": "https://cv.edtmsys.com",
+      "image_prompt": "AI CV analysis platform with split-screen showing CV on left and AI suggestions on right, clean modern UI"
+    },
+    {
+      "title": "Nkabom — Daycare Management System",
+      "slug": "nkabom-daycare",
+      "category": "Full-Stack / Mobile",
+      "status": "In Development",
+      "featured": true,
+      "year": 2024,
+      "summary": "Offline-first PWA daycare management system designed for the Ghanaian market, with mobile money integration, parent communication tools, and child progress tracking.",
+      "description": "A market-specific SaaS product for Ghanaian daycare centres, addressing the unique needs of the local childcare sector. Features offline-first architecture (critical for unreliable connectivity), MoMo (Mobile Money) payment integration, parent-teacher communication, attendance tracking, and progress reports. Built with a PWA approach for cross-platform access without app store friction.",
+      "problem": "Ghanaian daycare centres manage attendance, fees, and parent communication manually with paper records — prone to errors and difficult to scale.",
+      "solution": "Built an offline-first PWA that works without constant internet connectivity, integrates with MTN MoMo for fee payments, and provides structured digital tools for all daycare operations.",
+      "impact": [
+        "Fully offline-capable — works in areas with poor connectivity",
+        "Mobile Money integration removes friction from fee collection",
+        "Digital records replace error-prone paper systems",
+        "Designed specifically for the Ghanaian childcare market"
+      ],
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "PWA", "PostgreSQL", "Mobile Money API", "Node.js", "Docker"],
+      "github": null,
+      "live_url": null,
+      "image_prompt": "Daycare management app with child profiles, attendance grid, and mobile money payment screen, colourful friendly UI"
+    },
+    {
+      "title": "Barcode Inventory Management System",
+      "slug": "barcode-inventory-system",
+      "category": "Full-Stack / Enterprise",
+      "status": "Production",
+      "featured": false,
+      "year": 2022,
+      "summary": "Multi-location barcode-driven inventory tracking system for a manufacturing client, integrated with a Python backend. Reduced manual stocktaking errors by 70%.",
+      "description": "A comprehensive warehouse inventory management system using barcode scanning for real-time stock tracking across multiple warehouse locations. Built with a Python/Django backend, React frontend, and PostgreSQL database. Integrated with existing ERP workflows to provide a single source of truth for stock levels, movements, and reports.",
+      "problem": "A mineral water company with multiple warehouse locations was losing track of stock due to manual record-keeping, leading to 70%+ error rates in stocktaking.",
+      "solution": "Implemented a barcode-driven inventory system with real-time sync across all warehouse locations, automated stock alerts, and reporting dashboards.",
+      "impact": [
+        "70% reduction in manual stocktaking errors",
+        "Real-time stock visibility across all warehouse locations",
+        "Automated low-stock alerts and reorder triggers",
+        "Integrated with existing ERP workflows"
+      ],
+      "technologies": ["React", "Python", "Django", "PostgreSQL", "REST API", "Docker", "Bootstrap"],
+      "github": null,
+      "live_url": null,
+      "image_prompt": "Warehouse inventory dashboard showing barcode scanner, stock levels chart, and multi-location grid, industrial UI"
+    },
+    {
+      "title": "Pentecost Credit Union System",
+      "slug": "pentecost-credit-union",
+      "category": "Full-Stack / Fintech",
+      "status": "Production",
+      "featured": false,
+      "year": 2020,
+      "summary": "Full member financial management system for Pentecost Credit Union, handling deposits, withdrawals, susu accounts, fixed deposits, savings accounts, and SMS notifications.",
+      "description": "A complete credit union management platform built for the Church of Pentecost's cooperative savings scheme. Manages member registrations, multiple account types (savings, susu, fixed deposit), transaction processing, SMS notifications, and financial reporting. Built with Python/Django and deployed on Heroku.",
+      "problem": "The credit union was managing member finances and transactions manually, making it difficult to scale and prone to accounting errors.",
+      "solution": "Built a full-featured financial management web application with member portals, transaction processing, account type management, and automated SMS notifications.",
+      "impact": [
+        "Fully digitalised member account management",
+        "Automated SMS notifications for transactions",
+        "Support for multiple account types (susu, savings, fixed deposit)",
+        "Accurate financial reporting replacing manual ledgers"
+      ],
+      "technologies": ["Python", "Django", "PostgreSQL", "JavaScript", "Bootstrap", "SMS API", "Heroku"],
+      "github": null,
+      "live_url": "https://pcu-system.herokuapp.com/",
+      "image_prompt": "Credit union web app dashboard showing account balances, transaction history, and member management, clean blue UI"
+    },
+    {
+      "title": "Apothecary Farms — Marketing Website",
+      "slug": "apothecary-farms",
+      "category": "Frontend / CMS",
+      "status": "Production",
+      "featured": false,
+      "year": 2023,
+      "summary": "Modern marketing website for Apothecary Farms built with Next.js and Sanity CMS, featuring a store locator, scrolling announcement banners, and CMS-driven content throughout.",
+      "description": "Full frontend build for a US-based organic farm brand. Features include a dynamic store locator component, CMS-driven announcement banners with scroll effects, PortableText image rendering, and navbar UX improvements. Content fully managed through Sanity CMS without developer involvement.",
+      "problem": "The client needed a performant, CMS-driven marketing site where marketing staff could update content independently without developer involvement.",
+      "solution": "Built a Next.js site with Sanity CMS integration, giving marketing staff full content control through a friendly Studio interface while maintaining developer-quality performance and SEO.",
+      "impact": [
+        "Non-technical staff can update all content independently",
+        "Store locator enables customers to find retail locations",
+        "CMS-driven announcement banners for promotions",
+        "High performance and SEO scores"
+      ],
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Sanity CMS", "React", "Vercel"],
+      "github": null,
+      "live_url": "https://apothecaryfarms.com",
+      "image_prompt": "Organic farm brand website with green nature theme, store locator map, and product showcase sections"
+    },
+    {
+      "title": "FlexiFund — Banking App Brand & UI",
+      "slug": "flexifund-banking",
+      "category": "Product / Brand",
+      "status": "Concept",
+      "featured": false,
+      "year": 2023,
+      "summary": "Complete brand identity and UI suite for FlexiFund, a fintech product targeting the African market with flexible micro-savings and lending features.",
+      "description": "End-to-end product design and brand identity for FlexiFund — a fintech concept targeting underbanked African consumers. Includes logo suite, brand guidelines, colour systems, and a full mobile app UI kit covering onboarding, account dashboard, savings goals, and loan application flows.",
+      "problem": "Millions of Africans lack access to flexible savings and micro-lending products that fit their irregular income patterns.",
+      "solution": "Designed a brand and product UI that feels approachable and trustworthy to underbanked users, with features built around flexible savings cadences and MoMo-native payments.",
+      "impact": [
+        "Complete brand identity ready for development",
+        "Mobile-first UI optimised for low-end Android devices",
+        "Designed for MoMo-native payment flows",
+        "Product concept validated for the Ghanaian market"
+      ],
+      "technologies": ["Figma", "Branding", "UI Design", "Mobile UX"],
+      "github": null,
+      "live_url": null,
+      "image_prompt": "Fintech mobile app with savings goals, dark blue and gold theme, African mobile money UI, clean modern screens"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "BSc. Computer Science",
+      "institution": "Bharathiar University (Rathinam College of Arts & Science)",
+      "location": "Tamil Nadu, India",
+      "start_year": 2018,
+      "end_year": 2021,
+      "gpa": "3.7 / 4.0",
+      "highlights": [
+        "Final Year Project: Real-Time Audio Translation In A Social Media Platform",
+        "Developed a social networking platform integrating speech-to-text, machine translation, and text-to-speech APIs",
+        "Researched and implemented algorithms for efficient, low-latency audio processing"
+      ]
+    },
+    {
+      "degree": "Professional Diploma, Computer Networking (Microsoft / Cisco CCNA)",
+      "institution": "BlueCrest University College (NIIT)",
+      "location": "Ghana",
+      "start_year": 2013,
+      "end_year": 2015,
+      "gpa": "3.8 / 4.0",
+      "highlights": [
+        "CCNA (Cisco Certified Network Associate)",
+        "Specialisation in network design, routing protocols, and network security"
+      ]
+    }
+  ],
+
+  "certifications": [
+    { "name": "Python for Everybody", "issuer": "University of Michigan (Coursera)", "year": 2022 },
+    { "name": "REST APIs with FastAPI", "issuer": "Udemy", "year": 2023 },
+    { "name": "Docker & Kubernetes for Developers", "issuer": "Professional Development", "year": 2023 },
+    { "name": "AI/ML Engineering Fundamentals", "issuer": "DeepLearning.AI", "year": 2024, "status": "Ongoing" },
+    { "name": "AWS Solutions Architect Associate", "issuer": "Amazon Web Services", "year": 2025, "status": "In Progress" },
+    { "name": "CCNA — Cisco Certified Network Associate", "issuer": "Cisco", "year": 2015 },
+    { "name": "Cyber Security Certificate", "issuer": "Azure Skynet Solution", "year": 2019 }
+  ],
+
+  "about_sections": {
+    "headline": "I build things that scale — from enterprise microservices to AI-powered tools for African markets.",
+    "values": [
+      {
+        "title": "Clean Architecture",
+        "description": "I believe software should be maintainable long after the initial build. Every system I design is built with clear separation of concerns, sensible abstractions, and documentation that the next developer will thank you for."
+      },
+      {
+        "title": "Shipping Real Value",
+        "description": "I measure success by impact, not lines of code. Whether it's a 70% reduction in inventory errors or enabling non-technical staff to query data in plain English — I build things that move the needle."
+      },
+      {
+        "title": "African Tech Innovation",
+        "description": "Ghana and Africa represent one of the world's most exciting software markets. I'm passionate about building products that address real local problems — from offline-first PWAs to Mobile Money integrations."
+      },
+      {
+        "title": "Team Leadership",
+        "description": "The best software is built by well-led, motivated teams. I lead with clarity, conduct thorough code reviews, and invest in the growth of everyone around me — across time zones, cultures, and skill levels."
+      }
+    ],
+    "fun_facts": [
+      "I've coordinated engineering standups across Accra, New York, Dubai, and Sydney — simultaneously.",
+      "My university final year project involved building real-time audio translation between languages.",
+      "I once deployed a full Odoo ERP system for a credit union on a weekend.",
+      "I speak English, Twi, and Nzema fluently — and I'm working on French.",
+      "I'm EU Blue Card eligible and actively exploring relocation to Germany."
+    ]
+  }
+}

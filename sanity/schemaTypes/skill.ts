@@ -32,10 +32,12 @@ export default defineType({
         list: [
           {title: 'Frontend', value: 'frontend'},
           {title: 'Backend', value: 'backend'},
-          {title: 'Database', value: 'database'},
-          {title: 'DevOps', value: 'devops'},
+          {title: 'AI / ML', value: 'ai'},
+          {title: 'DevOps & Cloud', value: 'devops'},
+          {title: 'Databases', value: 'database'},
+          {title: 'Enterprise & ERP', value: 'enterprise'},
           {title: 'Tools', value: 'tools'},
-          {title: 'Programming Langauge', value: 'programming'}
+          {title: 'Programming Language', value: 'programming'}
         ]
       },
       validation: Rule => Rule.required()

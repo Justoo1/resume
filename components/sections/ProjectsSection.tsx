@@ -1,11 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Badge } from '@/components/ui/badge'
-import { Code, Github, ExternalLink, Target, Zap, TrendingUp } from 'lucide-react'
-import Image from 'next/image'
-import { urlFor } from '@/lib/utils'
-import { useLanguage } from '@/components/providers/LanguageProvider'
+import { motion } from 'framer-motion'
+import { ExternalLink } from 'lucide-react'
+import { GithubIcon } from '@/components/icons/BrandIcons'
 
 interface Project {
   _id: string
@@ -30,144 +28,138 @@ interface ProjectsSectionProps {
   projects: Project[]
 }
 
-const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
-  const { t } = useLanguage()
+function getCategory(technologies: string[]): string {
+  const t = technologies.join(' ').toLowerCase()
+  if (/langchain|openai|llm|rag|ollama|deepseek|mlflow/.test(t)) return 'AI / ML'
+  if (/fastapi|microservice|kubernetes/.test(t)) return 'Architecture'
+  if (/mobile money|pwa/.test(t)) return 'FinTech'
+  if (/figma|branding|ui design/.test(t)) return 'Product'
+  if (/odoo/.test(t)) return 'Enterprise'
+  if (/sanity/.test(t)) return 'CMS'
+  return 'Full-Stack'
+}
 
+const GRADIENTS = [
+  'from-blue-900 via-blue-800 to-blue-700',
+  'from-slate-800 via-slate-700 to-slate-600',
+  'from-emerald-900 via-teal-800 to-teal-600',
+  'from-violet-900 via-purple-800 to-purple-600',
+  'from-orange-900 via-amber-800 to-amber-600',
+  'from-cyan-900 via-sky-800 to-sky-600',
+  'from-rose-900 via-red-800 to-red-600',
+  'from-indigo-900 via-indigo-800 to-blue-700',
+  'from-green-900 via-emerald-800 to-emerald-600',
+]
+
+const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
   if (projects.length === 0) return null
-  console.log({projects})
+
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-slate-800">
+    <section className="py-24 bg-slate-50 dark:bg-slate-800/20" id="projects">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-6 py-3 rounded-full mb-6">
-            <Code className="w-5 h-5" />
-            <span className="font-semibold">{t.sections.portfolio}</span>
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 dark:text-slate-100 mb-4">
-            {t.sections.projects}
-          </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            {t.sections.projectsSubtitle}
+
+        {/* Section header */}
+        <div className="mb-16">
+          <p className="text-sm font-bold text-brand uppercase tracking-widest mb-3">
+            Portfolio Highlights
           </p>
+          <h2 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white">
+            Featured Projects
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={project._id}
-              className={`bg-white dark:bg-slate-800 rounded-3xl shadow-lg border border-gray-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${
-                index === 0 ? 'lg:col-span-2' : ''
-              }`}
+              className="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
             >
-              {/* Project Header */}
-              <div className="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 p-8 border-b border-gray-100 dark:border-slate-700">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      {project.featured && (
-                        <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white">
-                          ⭐ {t.projects.featured}
-                        </Badge>
-                      )}
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-3">{project.name}</h3>
-                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">{project.description}</p>
+              {/* Image / gradient placeholder */}
+              <div className="relative h-56 overflow-hidden">
+                {project.imageUrl ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={project.imageUrl}
+                    alt={project.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                ) : (
+                  <div
+                    className={`w-full h-full bg-gradient-to-br ${GRADIENTS[index % GRADIENTS.length]} flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}
+                  >
+                    <span className="text-white/20 text-8xl font-black select-none">
+                      {project.name.charAt(0)}
+                    </span>
                   </div>
+                )}
 
-                  <div className="flex gap-3 ml-6">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        className="bg-gray-800 hover:bg-gray-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white p-3 rounded-xl transition-all duration-300 hover:scale-110 shadow-lg"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={t.projects.viewCode}
-                      >
-                        <Github className="w-5 h-5" />
-                      </a>
-                    )}
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex gap-3">
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
-                        className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white p-3 rounded-xl transition-all duration-300 hover:scale-110 shadow-lg"
                         target="_blank"
                         rel="noopener noreferrer"
-                        title={t.projects.liveDemo}
+                        className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-colors"
+                        title="Live Demo"
                       >
                         <ExternalLink className="w-5 h-5" />
                       </a>
                     )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-colors"
+                        title="View Code"
+                      >
+                        <GithubIcon className="w-5 h-5" />
+                      </a>
+                    )}
                   </div>
-                </div>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <Badge
-                      key={tech}
-                      variant="outline"
-                      className="border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
                 </div>
               </div>
 
-              {project.imageUrl && <Image src={urlFor(project.imageUrl).url()} alt='project image' width={1000} height={800} className='w-full object-cover' />}
-
-              {/* Project Stats */}
-              {project.stats && Object.values(project.stats).some(stat => stat && stat > 0) && (
-                <div className="p-8">
-                  <h4 className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-4 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
-                    {t.projects.projectImpact}
-                  </h4>
-                  
-                  <div className="grid grid-cols-3 gap-6">
-                    {project.stats.users && (
-                      <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <Target className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                          <span className="font-bold text-blue-600 dark:text-blue-400 text-2xl">
-                            {project.stats.users.toLocaleString()}
-                          </span>
-                        </div>
-                        <div className="text-sm text-gray-600 dark:text-slate-400 font-medium uppercase tracking-wide">{t.projects.users}</div>
-                      </div>
-                    )}
-
-                    {project.stats.uptime && (
-                      <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <Zap className="w-5 h-5 text-green-600 dark:text-green-400" />
-                          <span className="font-bold text-green-600 dark:text-green-400 text-2xl">{project.stats.uptime}%</span>
-                        </div>
-                        <div className="text-sm text-gray-600 dark:text-slate-400 font-medium uppercase tracking-wide">{t.projects.uptime}</div>
-                      </div>
-                    )}
-
-                    {(project.stats.sales || project.stats.tasks || project.stats.dataPoints) && (
-                      <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <TrendingUp className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                          <span className="font-bold text-purple-600 dark:text-purple-400 text-2xl">
-                            {project.stats.sales ? `$${(project.stats.sales / 1000).toFixed(0)}k` :
-                             project.stats.tasks ? `${(project.stats.tasks / 1000).toFixed(0)}k` :
-                             project.stats.dataPoints ? `${(project.stats.dataPoints / 1000000).toFixed(1)}M` : ''}
-                          </span>
-                        </div>
-                        <div className="text-sm text-gray-600 dark:text-slate-400 font-medium uppercase tracking-wide">
-                          {project.stats.sales ? t.projects.revenue :
-                           project.stats.tasks ? t.projects.tasks :
-                           project.stats.dataPoints ? t.projects.dataPoints : ''}
-                        </div>
-                      </div>
-                    )}
-                  </div>
+              {/* Body */}
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-[10px] font-black bg-brand/10 text-brand px-2 py-0.5 rounded uppercase tracking-tighter">
+                    {getCategory(project.technologies)}
+                  </span>
+                  {project.featured && (
+                    <span className="text-[10px] font-black bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded uppercase tracking-tighter">
+                      Featured
+                    </span>
+                  )}
                 </div>
-              )}
-            </div>
+
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                  {project.name}
+                </h3>
+                <p className="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-3 leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-1.5">
+                  {project.technologies.slice(0, 5).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 text-[10px] font-bold text-slate-600 dark:text-slate-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
