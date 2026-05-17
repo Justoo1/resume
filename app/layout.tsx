@@ -9,7 +9,7 @@ import { Analytics } from '@/components/Analytics'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = generateSEOMetadata({
-  name: 'Your Name',
+  name: 'Justice Amankrah',
   title: 'Software Engineer & Web Developer',
   description: 'Professional CV and Portfolio showcasing skills, experience, and projects in full-stack development, cloud computing, and modern web technologies',
   url: 'https://yourportfolio.com',
