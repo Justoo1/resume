@@ -12,7 +12,7 @@ export const metadata: Metadata = generateSEOMetadata({
   name: 'Justice Amankrah',
   title: 'Software Engineer & Web Developer',
   description: 'Professional CV and Portfolio showcasing skills, experience, and projects in full-stack development, cloud computing, and modern web technologies',
-  url: 'https://yourportfolio.com',
+  url: 'https://justice.edtmsys.com',
   keywords: ['portfolio', 'cv', 'resume', 'software engineer', 'web developer', 'full-stack', 'react', 'next.js', 'typescript']
 })
 
